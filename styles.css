@@ -133,6 +133,142 @@ section + section {
   margin-top: var(--space-4);
 }
 
+.xp-list {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.xp {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  overflow: hidden;
+}
+
+.xp summary {
+  list-style: none;
+  cursor: pointer;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-weight: 600;
+  color: var(--color-text);
+  transition: background 0.2s ease;
+}
+
+.xp summary::-webkit-details-marker {
+  display: none;
+}
+
+.xp summary:hover {
+  background: color-mix(in srgb, var(--color-accent) 6%, white);
+}
+
+.xp[open] summary {
+  background: color-mix(in srgb, var(--color-accent) 10%, white);
+}
+
+.xp-role {
+  flex: 1;
+}
+
+.xp-dates {
+  color: var(--color-muted);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.xp-panel {
+  padding: var(--space-4);
+  display: grid;
+  gap: var(--space-4);
+  animation: xp-open 0.2s ease-out;
+}
+
+.xp-main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.xp-panel h3 {
+  margin: 0 0 var(--space-2);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text);
+}
+
+.xp-panel ul {
+  margin: 0 0 0 18px;
+}
+
+.xp-skills {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-3);
+}
+
+.xp-skill-group {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.xp-skill-label {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.xp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.xp-tag {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  background: var(--color-card);
+}
+
+.xp summary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-card);
+}
+
+@keyframes xp-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+  .xp summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .xp-main {
+    grid-template-columns: 1fr;
+  }
+}
+
 .section-number {
   display: inline-block;
   margin-right: var(--space-1);
