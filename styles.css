@@ -201,6 +201,11 @@ section + section {
   letter-spacing: 0.14em;
   font-size: 0.68rem;
   color: var(--color-accent);
+  text-decoration: none;
+}
+
+.card-link:hover {
+  color: color-mix(in srgb, var(--color-accent) 70%, var(--color-text));
 }
 
 a {
@@ -215,4 +220,142 @@ a:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 6px;
+}
+
+button:focus-visible,
+.overlay-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+body.overlay-open {
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.overlay.is-active {
+  display: flex;
+}
+
+.overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 15, 18, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.overlay-panel {
+  position: relative;
+  max-width: 880px;
+  width: min(92vw, 880px);
+  max-height: 86vh;
+  overflow-y: auto;
+  background: var(--color-card);
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+  padding: var(--space-5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: overlay-in 0.22s ease-out;
+}
+
+.overlay-panel h2 {
+  margin: 0 0 var(--space-2);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--color-text);
+}
+
+.overlay-close {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: var(--color-card);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.overlay-close:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+}
+
+.overlay-eyebrow {
+  margin: var(--space-3) 0 var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.7rem;
+  color: var(--color-muted);
+}
+
+.overlay-body p {
+  color: var(--color-muted);
+}
+
+.overlay-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+}
+
+.overlay-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.overlay-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  background: transparent;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.overlay-button:hover {
+  background: color-mix(in srgb, var(--color-accent) 12%, white);
+  transform: translateY(-1px);
+}
+
+.overlay-articles h3 {
+  margin-top: 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-text);
+}
+
+.overlay-articles ul {
+  margin-left: 18px;
+}
+
+@keyframes overlay-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

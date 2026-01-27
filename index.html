@@ -40,24 +40,24 @@
       <section id="projects">
         <h2><span class="section-number">01 —</span> Startup Experience</h2>
         <div class="grid">
-          <a class="card" href="#" target="_blank" rel="noreferrer">
+          <div class="card" id="project-shellvive">
             <h3>ShellVive</h3>
             <p>A DTC wellness brand concept with a focused go-to-market plan.</p>
             <p>Defined target segments and built a launch plan.</p>
-            <span class="card-link">View</span>
-          </a>
-          <a class="card" href="#" target="_blank" rel="noreferrer">
+            <a class="card-link view-link" href="#project-shellvive">View</a>
+          </div>
+          <div class="card" id="project-doctorclick">
             <h3>DoctorClick</h3>
             <p>A growth model for a healthcare services booking platform.</p>
             <p>Mapped funnel metrics and built a KPI dashboard.</p>
-            <span class="card-link">View</span>
-          </a>
-          <a class="card" href="#" target="_blank" rel="noreferrer">
+            <a class="card-link view-link" href="#project-doctorclick">View</a>
+          </div>
+          <div class="card" id="project-persona-blocks">
             <h3>Persona Blocks</h3>
             <p>A product discovery framework for multi-segment platforms.</p>
             <p>Built persona templates and a prioritization rubric.</p>
-            <span class="card-link">View</span>
-          </a>
+            <a class="card-link view-link" href="#project-persona-blocks">View</a>
+          </div>
         </div>
       </section>
 
@@ -110,5 +110,146 @@
         </p>
       </section>
     </main>
+
+    <div id="projectOverlay" class="overlay" aria-hidden="true">
+      <div class="overlay-backdrop" data-overlay-close="true"></div>
+      <div class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+        <button class="overlay-close" type="button" data-overlay-close="true">Back</button>
+        <p class="overlay-eyebrow">Project Detail</p>
+        <h2 id="overlayTitle"></h2>
+        <div class="overlay-body" id="overlayBody"></div>
+        <div class="overlay-tags" id="overlayTags"></div>
+        <div class="overlay-links">
+          <a id="overlayWebsite" class="overlay-button" href="#" target="_blank" rel="noreferrer">Website</a>
+          <a id="overlayDeck" class="overlay-button" href="#" target="_blank" rel="noreferrer">Pitch Deck</a>
+        </div>
+        <div class="overlay-articles">
+          <h3>Related Articles</h3>
+          <ul id="overlayArticles"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const PROJECTS = {
+        "project-shellvive": {
+          title: "ShellVive",
+          details: [
+            "Overview: A DTC wellness brand concept with a focused go-to-market plan.",
+            "Role: Defined target segments and built a launch plan.",
+            "Highlights: Additional details coming soon."
+          ],
+          website: "#",
+          deck: "#",
+          tags: ["Go-To-Market", "Wellness", "Launch Plan"],
+          articles: [
+            { label: "Market entry notes (placeholder)", url: "#" },
+            { label: "Customer segments (placeholder)", url: "#" }
+          ]
+        },
+        "project-doctorclick": {
+          title: "DoctorClick",
+          details: [
+            "Overview: A growth model for a healthcare services booking platform.",
+            "Role: Mapped funnel metrics and built a KPI dashboard.",
+            "Highlights: Additional details coming soon."
+          ],
+          website: "#",
+          deck: "#",
+          tags: ["Healthcare", "Growth", "KPI Design"],
+          articles: [
+            { label: "Funnel analysis (placeholder)", url: "#" },
+            { label: "Retention playbook (placeholder)", url: "#" }
+          ]
+        },
+        "project-persona-blocks": {
+          title: "Persona Blocks",
+          details: [
+            "Overview: A product discovery framework for multi-segment platforms.",
+            "Role: Built persona templates and a prioritization rubric.",
+            "Highlights: Additional details coming soon."
+          ],
+          website: "#",
+          deck: "#",
+          tags: ["Research", "Personas", "Prioritization"],
+          articles: [
+            { label: "Persona template (placeholder)", url: "#" },
+            { label: "Roadmap rubric (placeholder)", url: "#" }
+          ]
+        }
+      };
+
+      const overlay = document.getElementById("projectOverlay");
+      const overlayTitle = document.getElementById("overlayTitle");
+      const overlayBody = document.getElementById("overlayBody");
+      const overlayTags = document.getElementById("overlayTags");
+      const overlayWebsite = document.getElementById("overlayWebsite");
+      const overlayDeck = document.getElementById("overlayDeck");
+      const overlayArticles = document.getElementById("overlayArticles");
+      let lastFocused = null;
+
+      const openOverlay = (projectId) => {
+        const data = PROJECTS[projectId];
+        if (!data) {
+          return;
+        }
+
+        overlayTitle.textContent = data.title;
+        overlayBody.innerHTML = data.details.map((detail) => `<p>${detail}</p>`).join("");
+        overlayTags.innerHTML = data.tags
+          .map((tag) => `<span class="badge">${tag}</span>`)
+          .join("");
+        overlayWebsite.href = data.website || "#";
+        overlayDeck.href = data.deck || "#";
+        overlayArticles.innerHTML = data.articles
+          .map(
+            (article) =>
+              `<li><a href="${article.url}" target="_blank" rel="noreferrer">${article.label}</a></li>`
+          )
+          .join("");
+
+        lastFocused = document.activeElement;
+        overlay.classList.add("is-active");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("overlay-open");
+        const closeButton = overlay.querySelector(".overlay-close");
+        if (closeButton) {
+          closeButton.focus();
+        }
+      };
+
+      const closeOverlay = () => {
+        overlay.classList.remove("is-active");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("overlay-open");
+        if (lastFocused && typeof lastFocused.focus === "function") {
+          lastFocused.focus();
+        }
+      };
+
+      const handleRoute = () => {
+        const hash = window.location.hash.replace("#", "");
+        if (hash && PROJECTS[hash]) {
+          openOverlay(hash);
+        } else {
+          closeOverlay();
+        }
+      };
+
+      overlay.addEventListener("click", (event) => {
+        if (event.target.matches("[data-overlay-close='true']")) {
+          window.location.hash = "#projects";
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && overlay.classList.contains("is-active")) {
+          window.location.hash = "#projects";
+        }
+      });
+
+      window.addEventListener("hashchange", handleRoute);
+      window.addEventListener("load", handleRoute);
+    </script>
   </body>
 </html>
