@@ -104,6 +104,29 @@ header p {
   color: var(--color-accent);
 }
 
+.intro-wrap {
+  max-width: 920px;
+  margin: 18px 0 44px;
+}
+
+.intro-label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin: 14px 0 6px;
+}
+
+.intro {
+  font-size: 16px;
+  line-height: 1.75;
+  opacity: 0.86;
+  margin: 0;
+}
+
+.intro + .intro-label {
+  margin-top: 18px;
+}
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
