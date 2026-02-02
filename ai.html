@@ -11,9 +11,22 @@
       <div class="wrap site-header-inner">
         <span class="site-name">Daniel Yang</span>
         <nav class="site-nav">
-          <a href="./index.html">Home</a>
+          <div class="nav-dropdown">
+            <button class="nav-toggle" type="button" aria-expanded="false">
+              Homepage
+            </button>
+            <div class="nav-menu" role="menu">
+              <a href="./index.html#education" role="menuitem">Education</a>
+              <a href="./index.html#experience" role="menuitem">Work Experience</a>
+              <a href="./index.html#skills" role="menuitem">Skills</a>
+              <a href="./index.html#certifications" role="menuitem">Certifications</a>
+              <a href="./index.html#awards" role="menuitem">Awards</a>
+              <a href="./index.html#contact" role="menuitem">Contact</a>
+            </div>
+          </div>
+          <a href="./entrepreneur.html">Entrepreneur Experience</a>
           <a href="./ai.html" class="is-active">AI Agents</a>
-          <a href="#contact">Contact</a>
+          <a href="./index.html#contact">Contact</a>
         </nav>
       </div>
     </div>
@@ -23,23 +36,13 @@
       <p class="hero-summary">
         Selected agentic workflows and prototypes focused on analysis, summarization, and content understanding.
       </p>
-      <a class="breadcrumb" href="./index.html">← Back to Home</a>
     </header>
 
     <main class="wrap">
-      <section id="highlights">
-        <h2><span class="section-number">01 —</span> HIGHLIGHTS</h2>
-        <div class="badges" aria-label="Highlights">
-          <span class="badge">Agentic workflow design (prompting, tools, evaluation)</span>
-          <span class="badge">Data extraction + analysis pipelines</span>
-          <span class="badge">UX for AI results (reports, cards, summaries)</span>
-        </div>
-      </section>
-
-      <section id="projects">
-        <h2><span class="section-number">02 —</span> PROJECTS</h2>
+      <section id="agents">
+        <h2><span class="section-number">01 —</span> AGENTS</h2>
         <div class="grid">
-          <div class="card" id="ai-video-reaction-expressor">
+          <div class="card" id="agent-video-reaction-expressor">
             <h3>Video Reaction Expressor</h3>
             <p>
               Analyzes a YouTube video + visual signals, then runs an interview chatbot and generates a final synthesis report.
@@ -47,16 +50,17 @@
             <ul>
               <li>Inputs: video URL, metadata, visual evaluation signals, chat history</li>
               <li>Outputs: interview transcript + final synthesis report</li>
+              <li>Tools: OpenAI API · Python · Streamlit</li>
             </ul>
             <div class="card-links">
               <a href="#" target="_blank" rel="noreferrer">GitHub Repo</a>
               <a href="#" target="_blank" rel="noreferrer">Demo Video</a>
               <a href="#" target="_blank" rel="noreferrer">Write-up</a>
             </div>
-            <a class="card-link view-link" href="#project-video-reaction-expressor">View details</a>
+            <a class="card-link view-link" href="#agent-video-reaction-expressor">View</a>
           </div>
 
-          <div class="card" id="ai-tweet-analyzer">
+          <div class="card" id="agent-tweet-analyzer">
             <h3>Tweet Analyzer</h3>
             <p>
               Loads tweets, extracts themes, generates core pillars (strict JSON), and creates reactive tweets in the user’s voice.
@@ -64,26 +68,27 @@
             <ul>
               <li>Topic Modeler: returns 5 pillars in strict JSON and displays as a table</li>
               <li>News Reactor: scrapes article text and generates a tweet in the account’s voice</li>
+              <li>Tools: OpenAI API · Python · SQL</li>
             </ul>
             <div class="card-links">
               <a href="#" target="_blank" rel="noreferrer">GitHub Repo</a>
               <a href="#" target="_blank" rel="noreferrer">Live Demo</a>
               <a href="#" target="_blank" rel="noreferrer">Article</a>
             </div>
-            <a class="card-link view-link" href="#project-tweet-analyzer">View details</a>
+            <a class="card-link view-link" href="#agent-tweet-analyzer">View</a>
           </div>
         </div>
       </section>
 
       <section id="tooling">
-        <h2><span class="section-number">03 —</span> TOOLING</h2>
+        <h2><span class="section-number">02 —</span> TOOLING</h2>
         <p>
           OpenAI API · Streamlit · Python · SQL · ETL · Power BI · Tableau · GitHub
         </p>
       </section>
 
       <section id="contact">
-        <h2><span class="section-number">04 —</span> CONTACT</h2>
+        <h2><span class="section-number">03 —</span> CONTACT</h2>
         <p>
           <a href="mailto:daniel.yang.zy349@yale.edu">daniel.yang.zy349@yale.edu</a>
           · <a href="https://github.com/gliderhover" target="_blank" rel="noreferrer">GitHub</a>
@@ -92,18 +97,14 @@
       </section>
     </main>
 
-    <div id="projectOverlay" class="overlay" aria-hidden="true">
+    <div id="projectOverlay" class="overlay" aria-hidden="true" data-close-target="#agents">
       <div class="overlay-backdrop" data-overlay-close="true"></div>
       <div class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
         <button class="overlay-close" type="button" data-overlay-close="true">Back</button>
         <p class="overlay-eyebrow">Project Detail</p>
         <h2 id="overlayTitle"></h2>
         <div class="overlay-body" id="overlayBody"></div>
-        <div class="overlay-links">
-          <a id="overlayRepo" class="overlay-button" href="#" target="_blank" rel="noreferrer">GitHub Repo</a>
-          <a id="overlayDemo" class="overlay-button" href="#" target="_blank" rel="noreferrer">Demo</a>
-          <a id="overlayWriteup" class="overlay-button" href="#" target="_blank" rel="noreferrer">Write-up</a>
-        </div>
+        <div class="overlay-links" id="overlayLinks"></div>
         <div class="overlay-articles">
           <h3>Related Articles</h3>
           <ul id="overlayArticles"></ul>
@@ -111,109 +112,53 @@
       </div>
     </div>
 
-    <script>
-      const AI_PROJECTS = {
-        "project-video-reaction-expressor": {
-          title: "Video Reaction Expressor",
-          details: [
-            "Overview: Analyzes a YouTube video + visual signals, then runs an interview chatbot and generates a final synthesis report.",
-            "Inputs: Video URL, metadata, visual evaluation signals, chat history.",
-            "Outputs: Interview transcript + final synthesis report."
-          ],
-          repo: "#",
-          demo: "#",
-          writeup: "#",
-          articles: [
-            { label: "Process notes (placeholder)", url: "#" },
-            { label: "Evaluation rubric (placeholder)", url: "#" }
-          ]
-        },
-        "project-tweet-analyzer": {
-          title: "Tweet Analyzer",
-          details: [
-            "Overview: Loads tweets, extracts themes, generates core pillars (strict JSON), and creates reactive tweets in the user’s voice.",
-            "Topic Modeler: Returns 5 pillars in strict JSON and displays as a table.",
-            "News Reactor: Scrapes article text and generates a tweet in the account’s voice."
-          ],
-          repo: "#",
-          demo: "#",
-          writeup: "#",
-          articles: [
-            { label: "Pillar taxonomy (placeholder)", url: "#" },
-            { label: "Voice tuning (placeholder)", url: "#" }
-          ]
+    <script type="application/json" id="overlay-data">
+      {
+        "items": {
+          "agent-video-reaction-expressor": {
+            "title": "Video Reaction Expressor",
+            "details": [
+              "Overview: Analyzes a YouTube video + visual signals, then runs an interview chatbot and generates a final synthesis report.",
+              "Inputs: Video URL, metadata, visual evaluation signals, chat history.",
+              "Outputs: Interview transcript + final synthesis report."
+            ],
+            "links": [
+              { "label": "GitHub Repo", "url": "#" },
+              { "label": "Demo Video", "url": "#" },
+              { "label": "Write-up", "url": "#" }
+            ],
+            "articles": [
+              { "label": "Process notes (placeholder)", "url": "#" },
+              { "label": "Evaluation rubric (placeholder)", "url": "#" }
+            ]
+          },
+          "agent-tweet-analyzer": {
+            "title": "Tweet Analyzer",
+            "details": [
+              "Overview: Loads tweets, extracts themes, generates core pillars (strict JSON), and creates reactive tweets in the user’s voice.",
+              "Topic Modeler: Returns 5 pillars in strict JSON and displays as a table.",
+              "News Reactor: Scrapes article text and generates a tweet in the account’s voice."
+            ],
+            "links": [
+              { "label": "GitHub Repo", "url": "#" },
+              { "label": "Live Demo", "url": "#" },
+              { "label": "Article", "url": "#" }
+            ],
+            "articles": [
+              { "label": "Pillar taxonomy (placeholder)", "url": "#" },
+              { "label": "Voice tuning (placeholder)", "url": "#" }
+            ]
+          }
         }
-      };
-
-      const overlay = document.getElementById("projectOverlay");
-      const overlayTitle = document.getElementById("overlayTitle");
-      const overlayBody = document.getElementById("overlayBody");
-      const overlayRepo = document.getElementById("overlayRepo");
-      const overlayDemo = document.getElementById("overlayDemo");
-      const overlayWriteup = document.getElementById("overlayWriteup");
-      const overlayArticles = document.getElementById("overlayArticles");
-      let lastFocused = null;
-
-      const openOverlay = (projectId) => {
-        const data = AI_PROJECTS[projectId];
-        if (!data) {
-          return;
-        }
-
-        overlayTitle.textContent = data.title;
-        overlayBody.innerHTML = data.details.map((detail) => `<p>${detail}</p>`).join("");
-        overlayRepo.href = data.repo || "#";
-        overlayDemo.href = data.demo || "#";
-        overlayWriteup.href = data.writeup || "#";
-        overlayArticles.innerHTML = data.articles
-          .map(
-            (article) =>
-              `<li><a href="${article.url}" target="_blank" rel="noreferrer">${article.label}</a></li>`
-          )
-          .join("");
-
-        lastFocused = document.activeElement;
-        overlay.classList.add("is-active");
-        overlay.setAttribute("aria-hidden", "false");
-        document.body.classList.add("overlay-open");
-        const closeButton = overlay.querySelector(".overlay-close");
-        if (closeButton) {
-          closeButton.focus();
-        }
-      };
-
-      const closeOverlay = () => {
-        overlay.classList.remove("is-active");
-        overlay.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("overlay-open");
-        if (lastFocused && typeof lastFocused.focus === "function") {
-          lastFocused.focus();
-        }
-      };
-
-      const handleRoute = () => {
-        const hash = window.location.hash.replace("#", "");
-        if (hash && AI_PROJECTS[hash]) {
-          openOverlay(hash);
-        } else {
-          closeOverlay();
-        }
-      };
-
-      overlay.addEventListener("click", (event) => {
-        if (event.target.matches("[data-overlay-close='true']")) {
-          window.location.hash = "#projects";
-        }
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && overlay.classList.contains("is-active")) {
-          window.location.hash = "#projects";
-        }
-      });
-
-      window.addEventListener("hashchange", handleRoute);
-      window.addEventListener("load", handleRoute);
+      }
     </script>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© Daniel Yang · <a href="https://github.com/gliderhover" target="_blank" rel="noreferrer">GitHub</a></p>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
   </body>
 </html>
