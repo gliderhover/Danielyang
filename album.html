@@ -36,38 +36,56 @@
       <h1>Album</h1>
       <p class="hero-summary">AI music released on Suno</p>
       <div class="hero-actions">
-        <a class="button" href="https://suno.com/@dandelionlive" target="_blank" rel="noreferrer">Listen on Suno</a>
+        <a class="button" href="https://suno.com/@dandelionlive?page=songs" target="_blank" rel="noreferrer">Open on Suno</a>
         <a class="button button-secondary" href="#tracks">Browse tracks</a>
       </div>
     </header>
 
     <main class="wrap">
-      <section id="highlights">
-        <h2><span class="section-number">01 —</span> HIGHLIGHTS</h2>
-        <div class="badges" aria-label="Highlights">
-          <span class="badge">Genres / styles (placeholder)</span>
-          <span class="badge">Tools / workflow (placeholder)</span>
-          <span class="badge">Release cadence (placeholder)</span>
-        </div>
-      </section>
-
       <section id="tracks">
-        <h2><span class="section-number">02 —</span> TRACKS</h2>
+        <h2><span class="section-number">01 —</span> ENGLISH CATALOG</h2>
         <div class="filter-bar">
           <div class="filter-group">
             <label for="trackSearch">Search</label>
             <input id="trackSearch" type="search" placeholder="Search by title, style, or tag" />
           </div>
           <div class="filter-group">
-            <label for="tagFilter">Tag</label>
-            <select id="tagFilter">
-              <option value="all">All tags</option>
-            </select>
-          </div>
-          <div class="filter-group">
             <label for="sortFilter">Sort</label>
             <select id="sortFilter">
-              <option value="newest">Newest</option>
+              <option value="az">A–Z</option>
+              <option value="za">Z–A</option>
+            </select>
+          </div>
+        </div>
+        <div id="englishGrid" class="grid"></div>
+      </section>
+
+      <section id="chinese">
+        <h2><span class="section-number">02 —</span> 中文歌单</h2>
+        <div id="chineseGrid" class="grid"></div>
+      </section>
+
+      <section id="contact">
+        <h2><span class="section-number">03 —</span> CONTACT</h2>
+        <p>
+          <a href="mailto:daniel.yang.zy349@yale.edu">daniel.yang.zy349@yale.edu</a>
+          · <a href="https://github.com/gliderhover" target="_blank" rel="noreferrer">GitHub</a>
+          · <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+        </p>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© Daniel Yang · <a href="https://github.com/gliderhover" target="_blank" rel="noreferrer">GitHub</a></p>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
               <option value="az">A–Z</option>
             </select>
           </div>

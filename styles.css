@@ -526,6 +526,10 @@ section + section {
   margin-top: var(--space-2);
 }
 
+.track-tags {
+  margin-top: var(--space-2);
+}
+
 .card-links a {
   text-decoration: none;
   font-size: 0.75rem;
