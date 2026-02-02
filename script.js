@@ -1,4 +1,25 @@
 (() => {
+  const ALBUM = {
+    sunoProfile: "https://suno.com/@dandelionlive",
+    tracks: [
+      {
+        id: "track-001",
+        title: "REPLACE_ME",
+        style: "REPLACE_ME",
+        tags: ["REPLACE_ME", "REPLACE_ME"],
+        sunoUrl: "https://suno.com/....",
+        lyrics: "REPLACE_ME"
+      }
+    ],
+    playlists: [
+      {
+        title: "REPLACE_ME",
+        description: "REPLACE_ME",
+        url: "https://suno.com/..."
+      }
+    ]
+  };
+
   const dropdowns = document.querySelectorAll(".nav-dropdown");
   const closeAllDropdowns = () => {
     dropdowns.forEach((dropdown) => {
@@ -32,6 +53,7 @@
     if (event.key === "Escape") {
       closeAllDropdowns();
       closeOverlay();
+      closeLyricsOverlay();
     }
   });
 
@@ -175,6 +197,188 @@
     window.addEventListener("hashchange", handleOverlayRoute);
     window.addEventListener("load", handleOverlayRoute);
   }
+
+  const lyricsOverlay = document.getElementById("lyricsOverlay");
+  const lyricsTitle = document.getElementById("lyricsTitle");
+  const lyricsBody = document.getElementById("lyricsBody");
+  const toast = document.getElementById("toast");
+
+  const showToast = (message) => {
+    if (!toast) {
+      return;
+    }
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    window.clearTimeout(toast._timer);
+    toast._timer = window.setTimeout(() => {
+      toast.classList.remove("is-visible");
+    }, 1600);
+  };
+
+  function openLyricsOverlay(title, lyrics) {
+    if (!lyricsOverlay) {
+      return;
+    }
+    lyricsTitle.textContent = title || "";
+    lyricsBody.textContent = lyrics || "";
+    lyricsOverlay.classList.add("is-active");
+    lyricsOverlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("overlay-open");
+    const closeButton = lyricsOverlay.querySelector(".overlay-close");
+    if (closeButton) {
+      closeButton.focus();
+    }
+  }
+
+  function closeLyricsOverlay() {
+    if (!lyricsOverlay) {
+      return;
+    }
+    lyricsOverlay.classList.remove("is-active");
+    lyricsOverlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("overlay-open");
+  }
+
+  if (lyricsOverlay) {
+    lyricsOverlay.addEventListener("click", (event) => {
+      if (event.target.matches("[data-overlay-close='true']")) {
+        const targetHash = lyricsOverlay.getAttribute("data-close-target");
+        if (targetHash) {
+          window.location.hash = targetHash;
+        } else {
+          window.location.hash = "";
+        }
+      }
+    });
+  }
+
+  const albumGrid = document.getElementById("trackGrid");
+  const playlistGrid = document.getElementById("playlistGrid");
+  const trackSearch = document.getElementById("trackSearch");
+  const tagFilter = document.getElementById("tagFilter");
+  const sortFilter = document.getElementById("sortFilter");
+
+  const renderAlbumPage = () => {
+    if (!albumGrid) {
+      return;
+    }
+
+    const tracksWithIndex = ALBUM.tracks.map((track, index) => ({
+      ...track,
+      _index: index
+    }));
+
+    const uniqueTags = new Set();
+    tracksWithIndex.forEach((track) => {
+      (track.tags || []).forEach((tag) => uniqueTags.add(tag));
+    });
+
+    if (tagFilter) {
+      uniqueTags.forEach((tag) => {
+        const option = document.createElement("option");
+        option.value = tag;
+        option.textContent = tag;
+        tagFilter.appendChild(option);
+      });
+    }
+
+    const renderTracks = () => {
+      const query = (trackSearch?.value || "").toLowerCase().trim();
+      const selectedTag = tagFilter?.value || "all";
+      const sortValue = sortFilter?.value || "az";
+
+      let filtered = tracksWithIndex.filter((track) => {
+        const haystack = [
+          track.title,
+          track.style,
+          ...(track.tags || [])
+        ]
+          .join(" ")
+          .toLowerCase();
+        const matchesQuery = !query || haystack.includes(query);
+        const matchesTag = selectedTag === "all" || (track.tags || []).includes(selectedTag);
+        return matchesQuery && matchesTag;
+      });
+
+      if (sortValue === "newest") {
+        filtered = filtered.sort((a, b) => {
+          if (a.date && b.date) {
+            return new Date(b.date) - new Date(a.date);
+          }
+          return b._index - a._index;
+        });
+      } else {
+        filtered = filtered.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
+      }
+
+      albumGrid.innerHTML = filtered
+        .map((track) => {
+          const tags = (track.tags || [])
+            .map((tag) => `<span class="xp-tag">${tag}</span>`)
+            .join("");
+          return `
+            <div class="card">
+              <h3>${track.title}</h3>
+              <p>${track.style}</p>
+              <div class="xp-tags">${tags}</div>
+              <div class="card-links">
+                <a href="${track.sunoUrl}" target="_blank" rel="noreferrer">Play on Suno</a>
+                <button class="link-button" type="button" data-lyrics="${track.id}">Lyrics</button>
+                <button class="link-button" type="button" data-share="${track.id}">Share</button>
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+    };
+
+    renderTracks();
+
+    trackSearch?.addEventListener("input", renderTracks);
+    tagFilter?.addEventListener("change", renderTracks);
+    sortFilter?.addEventListener("change", renderTracks);
+
+    albumGrid.addEventListener("click", (event) => {
+      const lyricsButton = event.target.closest("[data-lyrics]");
+      const shareButton = event.target.closest("[data-share]");
+      if (lyricsButton) {
+        const trackId = lyricsButton.getAttribute("data-lyrics");
+        const track = tracksWithIndex.find((item) => item.id === trackId);
+        if (track) {
+          openLyricsOverlay(track.title, track.lyrics);
+        }
+        return;
+      }
+      if (shareButton) {
+        const trackId = shareButton.getAttribute("data-share");
+        const track = tracksWithIndex.find((item) => item.id === trackId);
+        if (track) {
+          navigator.clipboard
+            .writeText(track.sunoUrl)
+            .then(() => showToast("Copied"))
+            .catch(() => showToast("Copy failed"));
+        }
+      }
+    });
+
+    if (playlistGrid) {
+      playlistGrid.innerHTML = ALBUM.playlists
+        .map(
+          (playlist) => `
+          <div class="card">
+            <h3>${playlist.title}</h3>
+            <p>${playlist.description}</p>
+            <div class="card-links">
+              <a href="${playlist.url}" target="_blank" rel="noreferrer">View playlist</a>
+            </div>
+          </div>
+        `
+        )
+        .join("");
+    }
+  };
+
+  renderAlbumPage();
 
   const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)");
   const xpItems = document.querySelectorAll(".xp");

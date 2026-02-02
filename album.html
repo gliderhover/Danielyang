@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daniel Yang | Album</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-header">
+      <div class="wrap site-header-inner">
+        <span class="site-name">Daniel Yang</span>
+        <nav class="site-nav">
+          <div class="nav-dropdown">
+            <button class="nav-toggle" type="button" aria-expanded="false">
+              Homepage
+            </button>
+            <div class="nav-menu" role="menu">
+              <a href="./index.html#education" role="menuitem">Education</a>
+              <a href="./index.html#experience" role="menuitem">Work Experience</a>
+              <a href="./index.html#skills" role="menuitem">Skills</a>
+              <a href="./index.html#certifications" role="menuitem">Certifications</a>
+              <a href="./index.html#awards" role="menuitem">Awards</a>
+              <a href="./index.html#contact" role="menuitem">Contact</a>
+            </div>
+          </div>
+          <a href="./entrepreneur.html">Entrepreneur Experience</a>
+          <a href="./ai.html">AI Agents</a>
+          <a href="./album.html" class="is-active">Album</a>
+          <a href="./index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <header class="wrap hero" id="top">
+      <h1>Album</h1>
+      <p class="hero-summary">AI music released on Suno</p>
+      <div class="hero-actions">
+        <a class="button" href="https://suno.com/@dandelionlive" target="_blank" rel="noreferrer">Listen on Suno</a>
+        <a class="button button-secondary" href="#tracks">Browse tracks</a>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section id="highlights">
+        <h2><span class="section-number">01 —</span> HIGHLIGHTS</h2>
+        <div class="badges" aria-label="Highlights">
+          <span class="badge">Genres / styles (placeholder)</span>
+          <span class="badge">Tools / workflow (placeholder)</span>
+          <span class="badge">Release cadence (placeholder)</span>
+        </div>
+      </section>
+
+      <section id="tracks">
+        <h2><span class="section-number">02 —</span> TRACKS</h2>
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label for="trackSearch">Search</label>
+            <input id="trackSearch" type="search" placeholder="Search by title, style, or tag" />
+          </div>
+          <div class="filter-group">
+            <label for="tagFilter">Tag</label>
+            <select id="tagFilter">
+              <option value="all">All tags</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="sortFilter">Sort</label>
+            <select id="sortFilter">
+              <option value="newest">Newest</option>
+              <option value="az">A–Z</option>
+            </select>
+          </div>
+        </div>
+        <div id="trackGrid" class="grid"></div>
+      </section>
+
+      <section id="playlists">
+        <h2><span class="section-number">03 —</span> PLAYLISTS</h2>
+        <div id="playlistGrid" class="grid"></div>
+      </section>
+
+      <section id="contact">
+        <h2><span class="section-number">04 —</span> CONTACT</h2>
+        <p>
+          <a href="mailto:daniel.yang.zy349@yale.edu">daniel.yang.zy349@yale.edu</a>
+          · <a href="https://github.com/gliderhover" target="_blank" rel="noreferrer">GitHub</a>
+          · <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+        </p>
+      </section>
+    </main>
+
+    <div id="lyricsOverlay" class="overlay" aria-hidden="true" data-close-target="#tracks">
+      <div class="overlay-backdrop" data-overlay-close="true"></div>
+      <div class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="lyricsTitle">
+        <button class="overlay-close" type="button" data-overlay-close="true">Back</button>
+        <p class="overlay-eyebrow">Lyrics</p>
+        <h2 id="lyricsTitle"></h2>
+        <div id="lyricsBody" class="lyrics-body"></div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© Daniel Yang · <a href="https://github.com/gliderhover" target="_blank" rel="noreferrer">GitHub</a></p>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
