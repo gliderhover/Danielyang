@@ -537,6 +537,13 @@ section + section {
   text-decoration: none;
 }
 
+.card-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .card-links {
   display: flex;
   flex-wrap: wrap;
@@ -745,6 +752,66 @@ body.overlay-open {
   }
   to {
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 70;
+}
+
+.modal.is-active {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 15, 18, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.modal-panel {
+  position: relative;
+  max-width: 900px;
+  width: min(92vw, 900px);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--color-card);
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+  padding: var(--space-5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: bubble-in 0.22s ease-out;
+}
+
+.modal-close {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: var(--color-card);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+}
+
+@keyframes bubble-in {
+  from {
+    transform: scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
     opacity: 1;
   }
 }

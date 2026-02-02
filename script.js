@@ -28,10 +28,37 @@
     }
   });
 
+  let activeModal = null;
+
+  const openModal = (modal) => {
+    if (!modal) {
+      return;
+    }
+    activeModal = modal;
+    modal.classList.add("is-active");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("overlay-open");
+    const closeButton = modal.querySelector(".modal-close");
+    if (closeButton) {
+      closeButton.focus();
+    }
+  };
+
+  const closeModal = () => {
+    if (!activeModal) {
+      return;
+    }
+    activeModal.classList.remove("is-active");
+    activeModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("overlay-open");
+    activeModal = null;
+  };
+
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeAllDropdowns();
       closeOverlay();
+      closeModal();
     }
   });
 
@@ -54,6 +81,21 @@
       history.pushState(null, "", url.hash);
       smoothScrollToHash(url.hash);
       closeAllDropdowns();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-modal-target]");
+    if (trigger) {
+      event.preventDefault();
+      const modalId = trigger.getAttribute("data-modal-target");
+      const modal = document.getElementById(modalId);
+      openModal(modal);
+      return;
+    }
+
+    if (event.target.matches("[data-modal-close='true']")) {
+      closeModal();
     }
   });
 

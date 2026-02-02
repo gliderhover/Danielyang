@@ -82,15 +82,8 @@
             </div>
             <div class="card-links">
               <a href="https://youtu.be/jvmsOhectqk" target="_blank" rel="noreferrer">Watch on YouTube</a>
-              <a href="#" target="_blank" rel="noreferrer">View write-up</a>
-              <a href="#" target="_blank" rel="noreferrer">GitHub</a>
             </div>
-            <div class="card-links">
-              <a href="#" target="_blank" rel="noreferrer">GitHub Repo</a>
-              <a href="#" target="_blank" rel="noreferrer">Live Demo</a>
-              <a href="#" target="_blank" rel="noreferrer">Article</a>
-            </div>
-            <a class="card-link view-link" href="#agent-tweet-analyzer">View</a>
+            <button class="card-link view-link" type="button" data-modal-target="tweetAnalyzerModal">View</button>
           </div>
         </div>
       </section>
@@ -123,6 +116,34 @@
         <div class="overlay-articles">
           <h3>Related Articles</h3>
           <ul id="overlayArticles"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="tweetAnalyzerModal" class="modal" aria-hidden="true">
+      <div class="modal-backdrop" data-modal-close="true"></div>
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="tweetAnalyzerTitle">
+        <button class="modal-close" type="button" data-modal-close="true">Close</button>
+        <h2 id="tweetAnalyzerTitle">Tweet Analyzer — Strategic Tweet Engine</h2>
+        <p>
+          Turns a news article into a tweet in the user's voice using prior tweets, with theme extraction and structured output.
+        </p>
+        <ul>
+          <li>Topic Modeler: returns 5 pillars in strict JSON and displays as a table</li>
+          <li>News Reactor: scrapes article text and generates a tweet in the account’s voice</li>
+          <li>Tools: OpenAI API · Python · SQL</li>
+        </ul>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/jvmsOhectqk"
+            title="Sweet Tweet Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="card-links">
+          <a href="https://youtu.be/jvmsOhectqk" target="_blank" rel="noreferrer">Watch on YouTube</a>
         </div>
       </div>
     </div>
