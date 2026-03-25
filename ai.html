@@ -21,12 +21,14 @@
               <a href="./index.html#skills" role="menuitem">Skills</a>
               <a href="./index.html#certifications" role="menuitem">Certifications</a>
               <a href="./index.html#awards" role="menuitem">Awards</a>
+              <a href="./writing.html" role="menuitem">Writing / Analysis</a>
               <a href="./index.html#contact" role="menuitem">Contact</a>
             </div>
           </div>
-          <a href="./entrepreneur.html">Entrepreneur Experience</a>
+          <a href="./entrepreneur.html">Entrepreneur</a>
           <a href="./ai.html" class="is-active">AI Agents</a>
           <a href="./album.html">Album</a>
+          <a href="./writing.html">Writing / Analysis</a>
           <a href="./index.html#contact">Contact</a>
         </nav>
       </div>
@@ -54,11 +56,20 @@
               <li>Tools: OpenAI API · Python · Streamlit</li>
             </ul>
             <div class="card-links">
-              <a href="#" target="_blank" rel="noreferrer">GitHub Repo</a>
-              <a href="#" target="_blank" rel="noreferrer">Demo Video</a>
-              <a href="#" target="_blank" rel="noreferrer">Write-up</a>
+              <a href="https://github.com/gliderhover/Movie_reactor/tree/main/Movie%20reactor" target="_blank" rel="noreferrer">GitHub</a>
             </div>
             <a class="card-link view-link" href="#agent-video-reaction-expressor">View</a>
+          </div>
+
+          <div class="card" id="agent-youtube-ai-chat">
+            <h3>YouTube AI Chat Assistant</h3>
+            <p>
+              A YouTube-based chat assistant that helps summarize and interact with video content.
+            </p>
+            <div class="card-links">
+              <a href="https://github.com/gliderhover/youtube-ai-chat-assistant" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+            <button class="card-link view-link" type="button" data-modal-target="youtubeAiChatModal">View</button>
           </div>
 
           <div class="card" id="agent-tweet-analyzer">
@@ -120,6 +131,24 @@
       </div>
     </div>
 
+    <div id="youtubeAiChatModal" class="modal" aria-hidden="true">
+      <div class="modal-backdrop" data-modal-close="true"></div>
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="youtubeAiChatTitle">
+        <button class="modal-close" type="button" data-modal-close="true">Close</button>
+        <h2 id="youtubeAiChatTitle">YouTube AI Chat Assistant</h2>
+        <p>
+          A YouTube-based chat assistant that helps summarize and interact with video content.
+        </p>
+        <p><strong>Repository</strong></p>
+        <div class="card-links">
+          <a href="https://github.com/gliderhover/youtube-ai-chat-assistant" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+        <p><strong>Inputs</strong> — [Add]</p>
+        <p><strong>Outputs</strong> — [Add]</p>
+        <p><strong>Tools</strong> — [Add]</p>
+      </div>
+    </div>
+
     <div id="tweetAnalyzerModal" class="modal" aria-hidden="true">
       <div class="modal-backdrop" data-modal-close="true"></div>
       <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="tweetAnalyzerTitle">
@@ -159,9 +188,7 @@
               "Outputs: Interview transcript + final synthesis report."
             ],
             "links": [
-              { "label": "GitHub Repo", "url": "#" },
-              { "label": "Demo Video", "url": "#" },
-              { "label": "Write-up", "url": "#" }
+              { "label": "GitHub", "url": "https://github.com/gliderhover/Movie_reactor/tree/main/Movie%20reactor" }
             ],
             "articles": [
               { "label": "Process notes (placeholder)", "url": "#" },

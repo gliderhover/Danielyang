@@ -610,6 +610,19 @@ section + section {
   cursor: pointer;
 }
 
+.sample-type {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+  margin: 6px 0;
+}
+
+.sample-tag {
+  margin: 0 0 var(--space-2);
+  color: var(--color-muted);
+}
+
 .card-links .link-button:hover {
   color: color-mix(in srgb, var(--color-accent) 70%, var(--color-text));
 }
