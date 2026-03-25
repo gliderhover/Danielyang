@@ -623,6 +623,10 @@ section + section {
   color: var(--color-muted);
 }
 
+.is-hidden {
+  display: none;
+}
+
 .card-links .link-button:hover {
   color: color-mix(in srgb, var(--color-accent) 70%, var(--color-text));
 }

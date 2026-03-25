@@ -315,30 +315,7 @@
 
   renderAlbumPage();
 
-  const writingSearch = document.getElementById("writingSearch");
-  const writingType = document.getElementById("writingType");
-  const writingCards = Array.from(document.querySelectorAll(".sample-card"));
-
-  const applyWritingFilters = () => {
-    if (!writingCards.length) {
-      return;
-    }
-    const query = (writingSearch?.value || "").toLowerCase().trim();
-    const type = writingType?.value || "all";
-
-    writingCards.forEach((card) => {
-      const title = (card.getAttribute("data-title") || "").toLowerCase();
-      const cardType = card.getAttribute("data-type") || "";
-      const matchesQuery = !query || title.includes(query);
-      const matchesType = type === "all" || cardType === type;
-      card.style.display = matchesQuery && matchesType ? "" : "none";
-    });
-  };
-
-  if (writingCards.length) {
-    writingSearch?.addEventListener("input", applyWritingFilters);
-    writingType?.addEventListener("change", applyWritingFilters);
-  }
+  // Writing page filtering is handled inline on writing.html.
 
   const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)");
   const xpItems = document.querySelectorAll(".xp");
