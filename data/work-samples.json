@@ -1,80 +1,73 @@
 [
   {
-    "id": "avid-radiopharmaceuticals-case-writeup",
-    "filename": "Avid Radiopharmaceuticals Case Writeup.pdf",
-    "title": "Avid Radiopharmaceuticals Case Writeup",
+    "id": "case-write-up-avid-radiopharmaceuticals",
+    "filename": "Case Write-up_Avid Radiopharmaceuticals.pdf",
+    "title": "Case Write Up Avid Radiopharmaceuticals",
     "category": "Finance / Investing",
-    "url": "./assets/writing/pdf/Avid Radiopharmaceuticals Case Writeup.pdf"
+    "url": "./assets/writing/pdf/Case Write-up_Avid Radiopharmaceuticals.pdf"
   },
   {
-    "id": "duolingo-pm-case",
-    "filename": "Duolingo PM Case.pdf",
-    "title": "Duolingo PM Case",
-    "category": "Finance / Investing",
-    "url": "./assets/writing/pdf/Duolingo PM Case.pdf"
-  },
-  {
-    "id": "individual-case-write-up-",
-    "filename": "Individual Case Write-up .pdf",
-    "title": "Individual Case Write Up",
-    "category": "Finance / Investing",
-    "url": "./assets/writing/pdf/Individual Case Write-up .pdf"
-  },
-  {
-    "id": "investor-hw-3",
-    "filename": "Investor HW 3.pdf",
-    "title": "Investor HW 3",
-    "category": "Finance / Investing",
-    "url": "./assets/writing/pdf/Investor HW 3.pdf"
-  },
-  {
-    "id": "tata-group-in-west-bengal-case-memo",
-    "filename": "Tata Group in West Bengal Case Memo.pdf",
-    "title": "Tata Group In West Bengal Case Memo",
-    "category": "Finance / Investing",
-    "url": "./assets/writing/pdf/Tata Group in West Bengal Case Memo.pdf"
-  },
-  {
-    "id": "the-volkswagen-emissions-scandal-and-lessons-in-corporate-governance",
-    "filename": "The Volkswagen Emissions Scandal and Lessons in Corporate Governance.pdf",
-    "title": "The Volkswagen Emissions Scandal And Lessons In Corporate Governance",
+    "id": "memo-the-volkswagen-emissions-scandal-and-lessons-in-corporate-governance",
+    "filename": "Memo_The Volkswagen Emissions Scandal and Lessons in Corporate Governance.pdf",
+    "title": "Memo The Volkswagen Emissions Scandal And Lessons In Corporate Governance",
     "category": "Governance / Ethics",
-    "url": "./assets/writing/pdf/The Volkswagen Emissions Scandal and Lessons in Corporate Governance.pdf"
+    "url": "./assets/writing/pdf/Memo_The Volkswagen Emissions Scandal and Lessons in Corporate Governance.pdf"
   },
   {
-    "id": "capstone-jll",
-    "filename": "Capstone JLL.pdf",
-    "title": "Capstone JLL",
-    "category": "Other",
-    "url": "./assets/writing/pdf/Capstone JLL.pdf"
+    "id": "marketing-proposal-duolingo",
+    "filename": "Marketing Proposal_Duolingo.pdf",
+    "title": "Marketing Proposal Duolingo",
+    "category": "Marketing / GTM",
+    "url": "./assets/writing/pdf/Marketing Proposal_Duolingo.pdf"
   },
   {
-    "id": "daniel-yang-full-presentation-final",
-    "filename": "Daniel_Yang_Full_Presentation - Final.pdf",
-    "title": "Daniel Yang Full Presentation Final",
-    "category": "Other",
-    "url": "./assets/writing/pdf/Daniel_Yang_Full_Presentation - Final.pdf"
+    "id": "marketing-proposal-marriott-personalization-strategy",
+    "filename": "Marketing Proposal_Marriott Personalization Strategy.pdf",
+    "title": "Marketing Proposal Marriott Personalization Strategy",
+    "category": "Marketing / GTM",
+    "url": "./assets/writing/pdf/Marketing Proposal_Marriott Personalization Strategy.pdf"
   },
   {
-    "id": "fs-applied-analytics-intro-july-2025-",
-    "filename": "FS Applied Analytics Intro (July 2025).pdf",
-    "title": "FS Applied Analytics Intro (July 2025)",
-    "category": "Other",
-    "url": "./assets/writing/pdf/FS Applied Analytics Intro (July 2025).pdf"
+    "id": "marketing-proposal-retail-media-sales-kit-alo-sephora",
+    "filename": "Marketing Proposal_Retail Media Sales Kit ALO_Sephora.pdf",
+    "title": "Marketing Proposal Retail Media Sales Kit ALO Sephora",
+    "category": "Marketing / GTM",
+    "url": "./assets/writing/pdf/Marketing Proposal_Retail Media Sales Kit ALO_Sephora.pdf"
   },
   {
-    "id": "marriott-personalization-strategy",
-    "filename": "Marriott Personalization Strategy.pdf",
-    "title": "Marriott Personalization Strategy",
-    "category": "Other",
-    "url": "./assets/writing/pdf/Marriott Personalization Strategy.pdf"
+    "id": "business-analytics-aurora-autonomous-vehicle",
+    "filename": "Business Analytics_ Aurora Autonomous Vehicle.pdf",
+    "title": "Business Analytics Aurora Autonomous Vehicle",
+    "category": "Strategy / Operations / Analytics",
+    "url": "./assets/writing/pdf/Business Analytics_ Aurora Autonomous Vehicle.pdf"
   },
   {
-    "id": "retail-media-sales-kit-alo-sephora",
-    "filename": "Retail Media Sales Kit Alo_Sephora.pdf",
-    "title": "Retail Media Sales Kit Alo Sephora",
-    "category": "Real Estate Case Practice",
-    "url": "./assets/writing/pdf/Retail Media Sales Kit Alo_Sephora.pdf"
+    "id": "jll-fs-applied-analytics-intro-july-2025-",
+    "filename": "JLL_FS Applied Analytics Intro (July 2025).pdf",
+    "title": "JLL FS Applied Analytics Intro (July 2025)",
+    "category": "Strategy / Operations / Analytics",
+    "url": "./assets/writing/pdf/JLL_FS Applied Analytics Intro (July 2025).pdf"
+  },
+  {
+    "id": "jll-technology-product-catalog",
+    "filename": "JLL_Technology Product Catalog.pdf",
+    "title": "JLL Technology Product Catalog",
+    "category": "Strategy / Operations / Analytics",
+    "url": "./assets/writing/pdf/JLL_Technology Product Catalog.pdf"
+  },
+  {
+    "id": "memo-tata-group-in-west-bengal-case",
+    "filename": "Memo_Tata Group in West Bengal Case.pdf",
+    "title": "Memo Tata Group In West Bengal Case",
+    "category": "Strategy / Operations / Analytics",
+    "url": "./assets/writing/pdf/Memo_Tata Group in West Bengal Case.pdf"
+  },
+  {
+    "id": "case-write-up-parenting-magazine",
+    "filename": "Case Write-up_Parenting Magazine.pdf",
+    "title": "Case Write Up Parenting Magazine",
+    "category": "Writing / Essays",
+    "url": "./assets/writing/pdf/Case Write-up_Parenting Magazine.pdf"
   },
   {
     "id": "the-future-role-of-the-collector",

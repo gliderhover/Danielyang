@@ -9,38 +9,9 @@ const SOURCE_DIRS = [
 
 const CATEGORY_RULES = [
   {
-    key: "real-estate",
-    label: "Real Estate Case Practice",
-    keywords: [
-      "dcf",
-      "underwriting",
-      "cap-rate",
-      "caprate",
-      "noi",
-      "irr",
-      "valuation",
-      "proforma",
-      "pro-forma",
-      "rent-roll",
-      "rentroll",
-      "comps",
-      "re-case",
-      "real-estate",
-      "multifamily",
-      "office",
-      "industrial",
-      "retail"
-    ]
-  },
-  {
-    key: "strategy",
-    label: "Strategy / Operations Analysis",
-    keywords: ["aurora", "operations", "fleet", "johnson", "trip", "expansion", "logistics", "delivery"]
-  },
-  {
-    key: "finance",
-    label: "Finance / Investing",
-    keywords: ["investor", "hw", "avid", "radiopharmaceuticals", "case", "valuation"]
+    key: "marketing",
+    label: "Marketing / GTM",
+    keywords: ["marketing proposal", "duolingo", "marriott", "retail media"]
   },
   {
     key: "governance",
@@ -48,9 +19,30 @@ const CATEGORY_RULES = [
     keywords: ["volkswagen", "governance", "emissions", "scandal"]
   },
   {
+    key: "finance",
+    label: "Finance / Investing",
+    keywords: ["avid", "radiopharmaceutical", "case write-up_avid"]
+  },
+  {
     key: "writing",
     label: "Writing / Essays",
-    keywords: ["collector", "parenting", "magazine", "essay"]
+    keywords: ["parenting magazine", "future role of the collector"]
+  },
+  {
+    key: "strategy",
+    label: "Strategy / Operations / Analytics",
+    keywords: [
+      "business analytics",
+      "aurora",
+      "autonomous",
+      "applied analytics",
+      "technology product catalog",
+      "product catalog",
+      "tata group",
+      "west bengal",
+      "memo_tata",
+      "jll_fs"
+    ]
   }
 ];
 
@@ -96,9 +88,9 @@ const main = async () => {
       const key = filename.toLowerCase();
       if (!fileMap.has(key)) {
         const url =
-          source.key === "work-samples"
-            ? `./assets/work-samples/pdf/${filename}`
-            : `./assets/writing/pdf/${filename}`;
+          source.key === "writing"
+            ? `./assets/writing/pdf/${filename}`
+            : `./assets/work-samples/pdf/${filename}`;
         fileMap.set(key, { filename, url });
       }
     });
