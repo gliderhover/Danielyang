@@ -2,6 +2,7 @@
   {
     "id": "case-write-up-avid-radiopharmaceuticals",
     "filename": "Case Write-up_Avid Radiopharmaceuticals.pdf",
+    "extension": ".pdf",
     "title": "Case Write Up Avid Radiopharmaceuticals",
     "category": "Finance / Investing",
     "url": "./assets/writing/pdf/Case Write-up_Avid Radiopharmaceuticals.pdf"
@@ -9,6 +10,7 @@
   {
     "id": "memo-the-volkswagen-emissions-scandal-and-lessons-in-corporate-governance",
     "filename": "Memo_The Volkswagen Emissions Scandal and Lessons in Corporate Governance.pdf",
+    "extension": ".pdf",
     "title": "Memo The Volkswagen Emissions Scandal And Lessons In Corporate Governance",
     "category": "Governance / Ethics",
     "url": "./assets/writing/pdf/Memo_The Volkswagen Emissions Scandal and Lessons in Corporate Governance.pdf"
@@ -16,6 +18,7 @@
   {
     "id": "marketing-proposal-duolingo",
     "filename": "Marketing Proposal_Duolingo.pdf",
+    "extension": ".pdf",
     "title": "Marketing Proposal Duolingo",
     "category": "Marketing / GTM",
     "url": "./assets/writing/pdf/Marketing Proposal_Duolingo.pdf"
@@ -23,6 +26,7 @@
   {
     "id": "marketing-proposal-marriott-personalization-strategy",
     "filename": "Marketing Proposal_Marriott Personalization Strategy.pdf",
+    "extension": ".pdf",
     "title": "Marketing Proposal Marriott Personalization Strategy",
     "category": "Marketing / GTM",
     "url": "./assets/writing/pdf/Marketing Proposal_Marriott Personalization Strategy.pdf"
@@ -30,13 +34,39 @@
   {
     "id": "marketing-proposal-retail-media-sales-kit-alo-sephora",
     "filename": "Marketing Proposal_Retail Media Sales Kit ALO_Sephora.pdf",
+    "extension": ".pdf",
     "title": "Marketing Proposal Retail Media Sales Kit ALO Sephora",
     "category": "Marketing / GTM",
     "url": "./assets/writing/pdf/Marketing Proposal_Retail Media Sales Kit ALO_Sephora.pdf"
   },
   {
+    "id": "modeling-assessment-blackrock",
+    "filename": "Modeling Assessment_BlackRock.xlsx",
+    "extension": ".xlsx",
+    "title": "Modeling Assessment BlackRock",
+    "category": "Real Estate Financial Modeling",
+    "url": "./assets/work-samples/pdf/Modeling Assessment_BlackRock.xlsx"
+  },
+  {
+    "id": "modeling-assessment-dlp-capital",
+    "filename": "Modeling Assessment_DLP Capital.xlsx",
+    "extension": ".xlsx",
+    "title": "Modeling Assessment DLP Capital",
+    "category": "Real Estate Financial Modeling",
+    "url": "./assets/work-samples/pdf/Modeling Assessment_DLP Capital.xlsx"
+  },
+  {
+    "id": "modeling-assessment-tc",
+    "filename": "Modeling Assessment_TC.xls",
+    "extension": ".xls",
+    "title": "Modeling Assessment TC",
+    "category": "Real Estate Financial Modeling",
+    "url": "./assets/work-samples/pdf/Modeling Assessment_TC.xls"
+  },
+  {
     "id": "business-analytics-aurora-autonomous-vehicle",
     "filename": "Business Analytics_ Aurora Autonomous Vehicle.pdf",
+    "extension": ".pdf",
     "title": "Business Analytics Aurora Autonomous Vehicle",
     "category": "Strategy / Operations / Analytics",
     "url": "./assets/writing/pdf/Business Analytics_ Aurora Autonomous Vehicle.pdf"
@@ -44,6 +74,7 @@
   {
     "id": "jll-fs-applied-analytics-intro-july-2025-",
     "filename": "JLL_FS Applied Analytics Intro (July 2025).pdf",
+    "extension": ".pdf",
     "title": "JLL FS Applied Analytics Intro (July 2025)",
     "category": "Strategy / Operations / Analytics",
     "url": "./assets/writing/pdf/JLL_FS Applied Analytics Intro (July 2025).pdf"
@@ -51,6 +82,7 @@
   {
     "id": "jll-technology-product-catalog",
     "filename": "JLL_Technology Product Catalog.pdf",
+    "extension": ".pdf",
     "title": "JLL Technology Product Catalog",
     "category": "Strategy / Operations / Analytics",
     "url": "./assets/writing/pdf/JLL_Technology Product Catalog.pdf"
@@ -58,6 +90,7 @@
   {
     "id": "memo-tata-group-in-west-bengal-case",
     "filename": "Memo_Tata Group in West Bengal Case.pdf",
+    "extension": ".pdf",
     "title": "Memo Tata Group In West Bengal Case",
     "category": "Strategy / Operations / Analytics",
     "url": "./assets/writing/pdf/Memo_Tata Group in West Bengal Case.pdf"
@@ -65,6 +98,7 @@
   {
     "id": "case-write-up-parenting-magazine",
     "filename": "Case Write-up_Parenting Magazine.pdf",
+    "extension": ".pdf",
     "title": "Case Write Up Parenting Magazine",
     "category": "Writing / Essays",
     "url": "./assets/writing/pdf/Case Write-up_Parenting Magazine.pdf"
@@ -72,6 +106,7 @@
   {
     "id": "the-future-role-of-the-collector",
     "filename": "The Future Role of the Collector.pdf",
+    "extension": ".pdf",
     "title": "The Future Role Of The Collector",
     "category": "Writing / Essays",
     "url": "./assets/writing/pdf/The Future Role of the Collector.pdf"

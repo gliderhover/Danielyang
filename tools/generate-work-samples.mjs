@@ -9,6 +9,11 @@ const SOURCE_DIRS = [
 
 const CATEGORY_RULES = [
   {
+    key: "modeling",
+    label: "Real Estate Financial Modeling",
+    keywords: ["modeling assessment"]
+  },
+  {
     key: "marketing",
     label: "Marketing / GTM",
     keywords: ["marketing proposal", "duolingo", "marriott", "retail media"]
@@ -68,11 +73,11 @@ const categoryFromFilename = (filename) => {
   return "Other";
 };
 
-const readPdfFiles = async (dir) => {
+const readAssetFiles = async (dir) => {
   try {
     const entries = await fs.readdir(dir, { withFileTypes: true });
     return entries
-      .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".pdf"))
+      .filter((entry) => entry.isFile())
       .map((entry) => entry.name);
   } catch (error) {
     return [];
@@ -83,7 +88,7 @@ const main = async () => {
   const fileMap = new Map();
 
   for (const source of SOURCE_DIRS) {
-    const files = await readPdfFiles(source.dir);
+    const files = await readAssetFiles(source.dir);
     files.forEach((filename) => {
       const key = filename.toLowerCase();
       if (!fileMap.has(key)) {
@@ -102,6 +107,7 @@ const main = async () => {
     return {
       id: entry.filename.replace(/\.[^/.]+$/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       filename: entry.filename,
+      extension: path.extname(entry.filename).toLowerCase(),
       title,
       category,
       url: entry.url

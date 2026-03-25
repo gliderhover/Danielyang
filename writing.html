@@ -62,33 +62,39 @@
         </div>
       </section>
 
+      <section id="real-estate-modeling">
+        <h2><span class="section-number">01 —</span> REAL ESTATE FINANCIAL MODELING</h2>
+        <p class="sample-tag">Selected modeling assessments.</p>
+        <div class="grid sample-grid" data-category="Real Estate Financial Modeling"></div>
+      </section>
+
       <section id="strategy-operations">
-        <h2><span class="section-number">01 —</span> STRATEGY / OPERATIONS / ANALYTICS</h2>
+        <h2><span class="section-number">02 —</span> STRATEGY / OPERATIONS / ANALYTICS</h2>
         <div class="grid sample-grid" data-category="Strategy / Operations / Analytics"></div>
       </section>
 
       <section id="finance-investing">
-        <h2><span class="section-number">02 —</span> FINANCE / INVESTING</h2>
+        <h2><span class="section-number">03 —</span> FINANCE / INVESTING</h2>
         <div class="grid sample-grid" data-category="Finance / Investing"></div>
       </section>
 
       <section id="marketing-gtm">
-        <h2><span class="section-number">03 —</span> MARKETING / GTM</h2>
+        <h2><span class="section-number">04 —</span> MARKETING / GTM</h2>
         <div class="grid sample-grid" data-category="Marketing / GTM"></div>
       </section>
 
       <section id="governance-ethics">
-        <h2><span class="section-number">04 —</span> GOVERNANCE / ETHICS</h2>
+        <h2><span class="section-number">05 —</span> GOVERNANCE / ETHICS</h2>
         <div class="grid sample-grid" data-category="Governance / Ethics"></div>
       </section>
 
       <section id="writing-essays">
-        <h2><span class="section-number">05 —</span> WRITING / ESSAYS</h2>
+        <h2><span class="section-number">06 —</span> WRITING / ESSAYS</h2>
         <div class="grid sample-grid" data-category="Writing / Essays"></div>
       </section>
 
       <section id="other-samples" class="is-hidden">
-        <h2><span class="section-number">06 —</span> OTHER</h2>
+        <h2><span class="section-number">07 —</span> OTHER</h2>
         <div class="grid sample-grid" data-category="Other"></div>
       </section>
     </main>
@@ -101,6 +107,7 @@
 
     <script>
       const CATEGORY_ORDER = [
+        "Real Estate Financial Modeling",
         "Strategy / Operations / Analytics",
         "Finance / Investing",
         "Marketing / GTM",
@@ -133,12 +140,15 @@
         filtered.forEach((item) => {
           const card = document.createElement("div");
           card.className = "card sample-card";
+          const buttonLabel = item.extension === ".pdf" ? "View" : "Download (Excel)";
+          const linkTarget = item.extension === ".pdf" ? "_blank" : "";
+          const linkRel = item.extension === ".pdf" ? "noreferrer" : "";
           card.innerHTML = `
             <h3>${item.title}</h3>
             <p class="sample-type">${item.category}</p>
             <p class="sample-tag">${item.filename}</p>
             <div class="card-links">
-              <a href="${item.url}" target="_blank" rel="noreferrer">View</a>
+              <a href="${item.url}" ${linkTarget ? `target="${linkTarget}"` : ""} ${linkRel ? `rel="${linkRel}"` : ""}>${buttonLabel}</a>
             </div>
           `;
           const targetGrid = grids[item.category];
