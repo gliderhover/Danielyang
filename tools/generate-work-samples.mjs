@@ -26,7 +26,7 @@ const CATEGORY_RULES = [
   {
     key: "finance",
     label: "Finance / Investing",
-    keywords: ["avid", "radiopharmaceutical", "case write-up_avid"]
+    keywords: ["avid", "radiopharmaceutical", "case write-up_avid", "sovereign wealth", "wealth fund"]
   },
   {
     key: "writing",
