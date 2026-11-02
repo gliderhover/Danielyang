@@ -1,0 +1,11 @@
+name = "ask-daniel"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+MODEL = "claude-haiku-5-5"
+KNOWLEDGE_URL = "https://gliderhover.github.io/Danielyang/knowledge/profile.md"
+ALLOWED_ORIGINS = "https://gliderhover.github.io"
+
+# The API key is a secret, never put it in this file:
+#   npx wrangler secret put ANTHROPIC_API_KEY
