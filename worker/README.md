@@ -48,7 +48,7 @@ the Worker picks up changes within about five minutes. No redeploy needed.
 |---|---|---|
 | Allowed sites | `ALLOWED_ORIGINS` variable | `https://gliderhover.github.io` (localhost is always allowed for testing) |
 | Knowledge file | `KNOWLEDGE_URL` variable | the `profile.md` on your GitHub Pages site |
-| Answer length | `LIMITS.maxTokens` in `worker.js` | 450 tokens (answers are meant to be spoken) |
+| Answer length | `LIMITS.maxTokens` in `worker.js` | 700 tokens (answers are meant to be spoken) |
 | Question length | `LIMITS.maxUserChars` | 600 characters |
 | Conversation memory | `LIMITS.maxTurns` | last 16 messages |
 

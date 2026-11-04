@@ -21,7 +21,7 @@ const DEFAULTS = {
 const LIMITS = {
   maxTurns: 16, // messages kept from the conversation
   maxUserChars: 600, // per message
-  maxTokens: 450, // per answer; answers are meant to be spoken
+  maxTokens: 700, // per answer; the prompt asks for ~90 spoken words, this is headroom
 };
 
 const STYLES = {
@@ -223,6 +223,9 @@ export default {
       body: JSON.stringify({
         model: env.MODEL || DEFAULTS.MODEL,
         max_tokens: LIMITS.maxTokens,
+        // Short spoken answers don't need extended thinking, and thinking
+        // tokens would eat into max_tokens and cut answers off.
+        thinking: { type: "disabled" },
         stream: true,
         system: [
           {
