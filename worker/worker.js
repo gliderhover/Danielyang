@@ -135,29 +135,45 @@ function json(body, status, headers) {
 }
 
 /** Turns Anthropic's SSE stream into a stream of plain text deltas. */
-function sseToText(body) {
+function sseToText(body, debug) {
   const decoder = new TextDecoder();
   const encoder = new TextEncoder();
   let buffer = "";
+  const seen = [];
+  let stopReason = "";
+  const handle = (evt, controller) => {
+    const dataLine = evt.split("\n").find((l) => l.startsWith("data:"));
+    if (!dataLine) return;
+    try {
+      const data = JSON.parse(dataLine.slice(5).trim());
+      seen.push(data.type === "content_block_delta" ? data.delta?.type : data.type);
+      if (data.type === "content_block_delta" && data.delta?.type === "text_delta") {
+        controller.enqueue(encoder.encode(data.delta.text));
+      } else if (data.type === "message_delta" && data.delta?.stop_reason) {
+        stopReason = data.delta.stop_reason;
+      } else if (data.type === "error") {
+        console.log("Anthropic stream error", JSON.stringify(data.error));
+        controller.enqueue(encoder.encode("\n[The answer was cut off. Please ask again.]"));
+      }
+    } catch {
+      /* ignore partial or non-JSON lines */
+    }
+  };
   return body.pipeThrough(
     new TransformStream({
       transform(chunk, controller) {
-        buffer += decoder.decode(chunk, { stream: true });
+        buffer += decoder.decode(chunk, { stream: true }).replace(/\r\n/g, "\n");
         const events = buffer.split("\n\n");
         buffer = events.pop();
-        for (const evt of events) {
-          const dataLine = evt.split("\n").find((l) => l.startsWith("data:"));
-          if (!dataLine) continue;
-          try {
-            const data = JSON.parse(dataLine.slice(5).trim());
-            if (data.type === "content_block_delta" && data.delta?.type === "text_delta") {
-              controller.enqueue(encoder.encode(data.delta.text));
-            } else if (data.type === "error") {
-              controller.enqueue(encoder.encode("\n[The answer was cut off. Please ask again.]"));
-            }
-          } catch {
-            /* ignore partial or non-JSON lines */
-          }
+        for (const evt of events) handle(evt, controller);
+      },
+      flush(controller) {
+        buffer += decoder.decode();
+        if (buffer.trim()) handle(buffer, controller);
+        if (stopReason && stopReason !== "end_turn") console.log("Stop reason", stopReason);
+        if (debug) {
+          const counts = seen.reduce((m, t) => ((m[t] = (m[t] || 0) + 1), m), {});
+          controller.enqueue(encoder.encode(`\n[debug stop=${stopReason} events=${JSON.stringify(counts)}]`));
         }
       },
     })
@@ -225,7 +241,7 @@ export default {
       return json({ error: "The AI service is unavailable right now." }, 502, cors.headers);
     }
 
-    return new Response(sseToText(upstream.body), {
+    return new Response(sseToText(upstream.body, payload.debug === true), {
       headers: {
         ...cors.headers,
         "Content-Type": "text/plain; charset=utf-8",
