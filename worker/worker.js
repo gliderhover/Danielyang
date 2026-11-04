@@ -24,7 +24,7 @@ const LIMITS = {
   maxTokens: 450, // per answer; answers are meant to be spoken
 };
 
-export const STYLES = {
+const STYLES = {
   disciplined:
     "Disciplined and professional. Lead with the direct answer, then one or two concrete facts or numbers. Crisp, interview-ready sentences. No jokes, no filler.",
   humorous:
@@ -35,7 +35,7 @@ export const STYLES = {
     "Casual and friendly, like chatting over coffee. Contractions, plain words, relaxed rhythm.",
 };
 
-export function buildSystemPrompt(knowledge, style, lang) {
+function buildSystemPrompt(knowledge, style, lang) {
   const styleText = STYLES[style] || STYLES.disciplined;
   const langText =
     lang === "zh"
@@ -65,7 +65,7 @@ ${knowledge}
 </PROFILE>`;
 }
 
-export function sanitizeMessages(raw) {
+function sanitizeMessages(raw) {
   if (!Array.isArray(raw)) return null;
   const cleaned = raw
     .filter(
@@ -135,7 +135,7 @@ function json(body, status, headers) {
 }
 
 /** Turns Anthropic's SSE stream into a stream of plain text deltas. */
-export function sseToText(body) {
+function sseToText(body) {
   const decoder = new TextDecoder();
   const encoder = new TextEncoder();
   let buffer = "";
