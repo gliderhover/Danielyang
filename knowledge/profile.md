@@ -21,17 +21,17 @@ Keep facts here accurate; the bot will not invent anything that is not written b
 - The Ohio State University — B.S. in Architecture, cum laude (2018).
 
 ## Current role
-- Finance Manager in the Finance department at Payactiv (Milpitas, California), since July 2026.
+- Finance Manager in the Finance department at Payactiv (Milpitas, California), since June 2026.
 - At the same time I'm working on a doctorate in Artificial Intelligence at the University of the Cumberlands, which I started in 2026.
 - I finished my Yale MBA in May 2026. During the MBA I worked at C&D Consulting and the Tsai Center for Innovative Thinking.
 - For questions about my day-to-day work at Payactiv beyond my title, or about availability, visitors should email me at daniel.yang.zy349@yale.edu.
 
 ## Work experience
 
-### Payactiv — Finance Manager (July 2026 – present)
+### Payactiv — Finance Manager (June 2026 – present)
 - Finance department, based in Milpitas, California.
 
-### C&D Consulting — Data Engineer & Operations MBA Intern (Aug 2025 – 2026)
+### C&D Consulting — Data Engineer & Operations MBA Intern (Aug 2025 – May 2026)
 - Helped define a Common Data Model (core entities and relationships) to give semantic meaning to commercial real estate (CRE) datasets — a CDM-first foundation to turn fragmented CRE data into an AI-ready product.
 - Built high-fidelity synthetic portfolio data for product testing.
 - Engineered ETL pipelines in two stages: Stage 1 "Lite" with automated Power Query ingestion; Stage 2 "Scale" with Python pipelines into a cloud lakehouse using a Medallion (Bronze/Silver/Gold) architecture.
@@ -41,7 +41,7 @@ Keep facts here accurate; the bot will not invent anything that is not written b
 - Strategic support for JLL Argentina: rebuilt the semantic layer for scoring and appraisal templates.
 - Business development: ICP and buyer persona cards, a relational schema mapping Fortune 1000 companies and their real estate teams, a prospect maturity scoring model with a prioritized top-50 target list, a competitor service/pricing matrix (5–10 competitors), TAM/SAM/SOM market sizing and delivery unit economics, and research on SOC 2 and enterprise security expectations.
 
-### Tsai Center for Innovative Thinking (Yale) — Venture Development Coordinator (from Aug 2025, during my MBA)
+### Tsai Center for Innovative Thinking (Yale) — Venture Development Coordinator (Aug 2025 – May 2026)
 - Supported 20+ ventures by matching founders with 40+ mentors and investors.
 - Delivered 10+ workshops on sustainability, healthcare and tech.
 - Automated milestone and outcome reporting with Airtable, Notion and Tableau, enabling weekly funnel and engagement tracking.
