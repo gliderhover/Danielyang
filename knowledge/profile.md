@@ -13,10 +13,13 @@ Keep facts here accurate; the bot will not invent anything that is not written b
 - Bilingual: English and Mandarin Chinese.
 
 ## Education
-- University of the Cumberlands — PhD in Artificial Intelligence (executive program), started in 2026, in progress. Coursework includes PhDAI-731 Analytical Methods for Machine Learning.
-  - Medical Diagnosis System for Heart Disease (Oct 2026): a random forest tuned by Bayesian optimization plus a Bayesian logistic regression with priors from published medical studies (PyMC), on 920 patients from four hospitals. The averaged hybrid score reached 0.880 AUC and 80.9% accuracy on 230 unseen patients; Bayesian updating raised AUC from 0.736 (literature prior only) to 0.876 as each hospital's data was added. I also flagged its limits: lower sensitivity for women and accuracy drops at new hospitals, so it needs local validation and a doctor's review.
-  - CNN-LSTM image classification on CIFAR-10 (Oct 2026, team residency project in PyTorch): 13 controlled experiments; the final CNN-BiLSTM reached 91.25% test accuracy versus 87.05% for a CNN-only baseline and 61.33% for an LSTM on raw pixels. Batch normalization, augmentation and CNN width mattered more than LSTM size.
-  - Literature review, "Model Evaluation Matrices in AI-Driven Supply Chains" (Nov 2026): synthesized 40 peer-reviewed sources into 11 metric families across three layers (statistical accuracy, uncertainty quality, operational or decision value), and proposed a four-layer evaluation matrix. Key finding: the most accurate forecasting model is not always the cheapest to operate.
+- University of the Cumberlands — Ph.D. in Artificial Intelligence (executive program), in progress, started 2026. Coursework includes PhDAI-731 Analytical Methods for Machine Learning.
+  - Built and evaluated healthcare and vision ML models in Python and PyTorch.
+  - CNN-BiLSTM image classifier on CIFAR-10 (team residency project): 13 controlled experiments; 91.25% test accuracy versus 87.05% for a CNN-only baseline and 61.33% for an LSTM on raw pixels. Batch normalization, augmentation and CNN width mattered more than LSTM size.
+  - Heart disease diagnosis system: a Bayesian-optimized random forest combined with a PyMC Bayesian logistic regression using priors from published medical studies; AUC 0.88 across 920 patients from 4 hospital sites, 80.9% accuracy on unseen patients. Bayesian updating raised AUC from 0.736 (literature prior only) to 0.876 as each hospital's data was added. Limits I flagged: lower sensitivity for women and accuracy drops at new sites, so it needs local validation and a doctor's review.
+  - Co-authored a benchmark of 4 transformer models for clinical note classification; PubMedBERT was best at 93.3% accuracy.
+  - Designed a catastrophe modeling framework for correlated AI agent failures, using public benchmark data on 60+ models (SWE-bench, Terminal-Bench). Conformal recalibration produced new-model failure forecasts with 88% to 94% coverage on 90% bands and under 5% error, versus 42% for an independence baseline.
+  - Literature review, "Model Evaluation Matrices in AI-Driven Supply Chains": synthesized 40 peer-reviewed sources into 11 metric families and proposed a four-layer evaluation matrix; key finding: the most accurate forecasting model is not always the cheapest to operate.
 - Yale School of Management — MBA, graduated May 2026. Focus: Real Estate, Data Analytics, and Financial Services.
   - Awards at Yale: 2024 Yale Climate Innovation Grant; New Haven Civic Innovation Prize; ULI Hines Competition winner.
 - University of Pennsylvania — Master of Architecture, plus a Real Estate Investing & Analysis Certificate (2021).
@@ -32,13 +35,21 @@ Keep facts here accurate; the bot will not invent anything that is not written b
 ## Work experience
 
 ### Payactiv — Finance Manager (June 2026 – present)
-- Finance department, based in Milpitas, California. Payactiv provides earned wage access (EWA), letting employees access pay they've already earned before payday.
-- Reconcile EWA repayments for enterprise employer clients, tracing each employee's balance from amount due through deduction submission, payroll confirmation and clearance.
-- Run payroll deduction cycles across UKG and ADP integrations, including API submissions, confirmation reports and resubmissions when deductions fail.
-- Consolidate and de-duplicate employer payroll and earnings files; analyze write-off candidates using hours worked, enrollment status and pay-cycle confirmations.
-- Finance owner for a portfolio of employer accounts, working with Customer Success, Integrations and client payroll teams.
-- Built repeatable reconciliation workbooks that surface employee-level discrepancies before each pay date, and an internal escalation directory that maps each case type to the right first contact and backup.
-- Do not share client names, dollar amounts or internal incidents; for specifics, point visitors to email.
+- Finance department, Milpitas, California. Payactiv provides earned wage access (EWA): employees can draw on pay they've already earned before payday, and employers repay it through payroll deductions.
+- Own end-to-end EWA payroll-deduction reconciliation across about 986 employer clients on UKG (592) and ADP (394), resolving confirmation, clearance and rollover discrepancies.
+- Monitor EWA write-off losses in basis points against a 9.9–15 bps tolerance benchmark and report loss trends and drivers to senior finance leadership.
+- Maintain a 987-employer credit risk watchlist screened for bankruptcies, M&A, wind-downs and leadership changes; escalate pre-petition deduction balances for immediate action.
+- Lead escalations from Customer Success on employer account issues (recurring deduction shortfalls, failed API deductions, deduction-code setup errors, access that continued after a suspension), and partner with engineering, database and ADP/UKG operations teams on root causes such as duplicate records, ID normalization and department-code mismatches.
+- Build employer risk profiles (partial-deduction behavior, GTN vs. fixed-tax models, collections from terminated employees, portal adoption, monthly volume vs. losses) and develop credit-control policy proposals, including an access-pause rule tied to a 70% outstanding-balance clearance threshold supported by FLSA wage-floor analysis.
+- Write client-facing reconciliation communications, internal escalations and CEO/CFO briefings that separate decisions needed from resolved items.
+- Automation: Python (pandas, openpyxl) notebooks replacing manual Excel matching; a UKG YTD Confirmation pipeline that validates HRIS confirmation files and produces standardized payroll outputs from one configuration block; the UKG Multiple Recon engine (v5) that matches deductions at the employee level with configurable pay-date windows and automatic rollover splits; a Google Apps Script sync for the Account Issue Board; an ADP loss dashboard rebuilt around a single source of truth; and one centralized HTML tool that consolidates eight recurring reconciliation and analysis engines.
+- Achievement: quantified a pay-cycle date-assignment defect at a large healthcare client — about 9,156 transactions and $1.1 million in mis-dated access in 2026, $11.8K in attributable write-offs, and about $73.5K in live forward exposure.
+- Achievement: delivered the first consolidated FY2026 UKG + ADP loss dashboard by reconciling five large source workbooks, giving leadership one view of write-off performance.
+- Achievement: co-led employer outreach during a company-wide duplicate ACH debit incident — the team sent about 200 employer communications in one day, and I personally owned resolution for 23 accounts.
+- Achievement: flagged high-risk employers ahead of major credit events, including an imminent Chapter 11 filing and a roughly 27,000-employee, 175-facility healthcare restructuring, enabling early protection of pre-petition balances.
+- Achievement: identified unauthorized EWA transactions at a former client after an employer-level suspension lapsed, and led the internal incident recap and recovery outreach.
+- Achievement: turned a mostly manual reconciliation process across about 986 employers into Python pipelines with built-in validation (deduplication, ID normalization, date checks), making weekly recon faster and more consistent and freeing time for loss investigation.
+- Never name Payactiv's clients; describe them generically as above.
 
 ### C&D Consulting — Data Engineer & Operations MBA Intern (Aug 2025 – May 2026)
 - Helped define a Common Data Model (core entities and relationships) to give semantic meaning to commercial real estate (CRE) datasets — a CDM-first foundation to turn fragmented CRE data into an AI-ready product.

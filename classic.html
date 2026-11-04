@@ -51,12 +51,10 @@
         <h2><span class="section-number">01 —</span> EDUCATION</h2>
         <div class="education-list">
           <div class="education-item">
-            <h3>University of the Cumberlands — PhD, Artificial Intelligence (Executive program, in progress since 2026)</h3>
-            <p>Coursework includes PhDAI-731 Analytical Methods for Machine Learning. Selected projects and achievements:</p>
+            <h3>University of the Cumberlands — Ph.D. in Artificial Intelligence (in progress, 2026 – present)</h3>
             <ul>
-              <li>Medical Diagnosis System for Heart Disease: combined a random forest tuned by Bayesian optimization with a Bayesian logistic regression built on literature priors (PyMC), using 920 patients from four hospitals; the hybrid score reached 0.880 AUC and 80.9% accuracy on unseen patients, and Bayesian updating lifted AUC from 0.736 to 0.876 as each hospital's data arrived</li>
-              <li>CNN-LSTM image classification on CIFAR-10 (team residency project, PyTorch): ran 13 controlled experiments; the final CNN-BiLSTM reached 91.25% test accuracy versus 87.05% for a CNN-only baseline</li>
-              <li>Literature review, "Model Evaluation Matrices in AI-Driven Supply Chains": synthesized 40 peer-reviewed sources into 11 metric families and proposed a four-layer evaluation matrix linking forecast accuracy to decision value</li>
+              <li>Built and evaluated healthcare and vision ML models in Python and PyTorch: a CNN-BiLSTM image classifier reaching 91.25% test accuracy on CIFAR-10, a heart disease diagnosis system combining a Bayesian-optimized Random Forest with PyMC Bayesian updating (AUC 0.88 across 920 patients from 4 sites), and a co-authored benchmark of 4 transformer models for clinical note classification (PubMedBERT best at 93.3% accuracy).</li>
+              <li>Designed a catastrophe modeling framework for correlated AI agent failures using public benchmark data on 60+ models (SWE-bench, Terminal-Bench); used conformal recalibration to produce new-model failure forecasts with 88% to 94% coverage on 90% bands and under 5% error, versus 42% for an independence baseline.</li>
             </ul>
           </div>
           <div class="education-item">
@@ -78,27 +76,43 @@
         <div class="xp-list">
           <details class="xp">
             <summary>
-              <span class="xp-role">Payactiv — Finance Manager</span>
+              <span class="xp-role">Payactiv — Finance Manager, Finance · Milpitas, CA</span>
               <span class="xp-dates">Jun 2026 - Present</span>
             </summary>
             <div class="xp-panel">
               <div class="xp-main">
                 <div>
                   <h3>Responsibilities</h3>
+                  <p><strong>Finance, Risk &amp; Escalations</strong></p>
                   <ul>
-                    <li>Reconcile earned wage access (EWA) repayments for enterprise employer clients, tracing each employee's balance from amount due to deduction submission, payroll confirmation and final clearance</li>
-                    <li>Run payroll deduction cycles across UKG and ADP integrations: API submissions, confirmation reports, failed-deduction follow-up and resubmissions ahead of each pay date</li>
-                    <li>Consolidate and de-duplicate employer payroll and gross-earnings files to support reconciliations and exposure reviews</li>
-                    <li>Analyze write-off candidates by linking transactions to hours worked, enrollment status and pay-cycle confirmations</li>
-                    <li>Act as finance owner for a portfolio of employer accounts, coordinating with Customer Success, Integrations and client payroll teams</li>
+                    <li>Own end-to-end Earned Wage Access (EWA) payroll-deduction reconciliation across ~986 employer clients on the UKG (592) and ADP (394) platforms, resolving confirmation, clearance and rollover discrepancies.</li>
+                    <li>Monitor EWA write-off losses in basis points against a 9.9–15 bps tolerance benchmark, and report loss trends and drivers to senior finance leadership.</li>
+                    <li>Maintain a 987-employer credit risk watchlist screened for bankruptcies, M&amp;A, wind-downs and leadership changes, and escalate pre-petition deduction balances for immediate action.</li>
+                    <li>Lead escalations from Customer Success on employer account issues, including recurring deduction shortfalls, failed API deductions, deduction-code setup errors and access that continued after a suspension.</li>
+                    <li>Partner with engineering, database and ADP/UKG operations teams to find root causes of system defects and data-quality issues such as duplicate records, ID normalization and department-code mismatches.</li>
+                    <li>Build employer risk profiles covering partial-deduction behavior, GTN vs. fixed-tax models, collections from terminated employees, portal adoption, and monthly volume vs. losses.</li>
+                    <li>Develop credit-control policy proposals, including an access-pause rule tied to a 70% outstanding-balance clearance threshold, supported by FLSA wage-floor analysis.</li>
+                    <li>Write client-facing reconciliation communications, internal escalations and CEO/CFO briefings that separate decisions needed from resolved items.</li>
+                  </ul>
+                  <p><strong>Automation &amp; Tooling</strong></p>
+                  <ul>
+                    <li>Automate recurring reconciliation workflows in Python (pandas, openpyxl), replacing manual Excel matching with repeatable notebooks for UKG YTD confirmation and multi-employer recon runs.</li>
+                    <li>Built the UKG YTD Confirmation pipeline. It reads HRIS confirmation-code files from shared drives, checks for invalid dates and duplicate branches, and produces standardized payroll outputs from one configuration block.</li>
+                    <li>Engineered the UKG Multiple Recon engine (v5). It matches deductions at the employee level using employer and employee ID keys, uses configurable pay-date windows, and splits out rollovers automatically.</li>
+                    <li>Built a Google Apps Script sync for the Account Issue Board, so updates to employer account issues are tracked in one shared system instead of in emails and spreadsheets.</li>
+                    <li>Redesigned the ADP loss dashboard around a single source of truth (the ADP Comprehensive Tracker), cutting down manual raw-data pulls and removing duplicated inputs.</li>
+                    <li>Consolidated eight recurring reconciliation and analysis engines into one centralized HTML tool, including a discrepancy extractor whose output feeds the downstream analyses.</li>
                   </ul>
                 </div>
                 <div>
                   <h3>Achievements</h3>
                   <ul>
-                    <li>Built repeatable reconciliation workbooks (due vs. submitted vs. confirmed vs. cleared) that surface employee-level discrepancies before each pay date</li>
-                    <li>Created an internal escalation directory that maps each case type, such as API deduction failures, to the right first contact and backup, based on patterns in past support threads</li>
-                    <li>Turned raw time-and-attendance and earnings data into wage-coverage views that support collection and write-off decisions</li>
+                    <li>Quantified a pay-cycle date-assignment defect at a large healthcare client: ~9,156 transactions and ~$1.1M in mis-dated access in 2026, $11.8K in attributable write-offs, and ~$73.5K in live forward exposure.</li>
+                    <li>Delivered the first consolidated FY2026 UKG + ADP loss dashboard by extracting and reconciling data from five large source workbooks, giving leadership a single view of write-off performance.</li>
+                    <li>Co-led employer outreach during a company-wide duplicate ACH debit incident: the team sent ~200 employer communications in one day, and I personally owned resolution for 23 accounts.</li>
+                    <li>Flagged high-risk employers ahead of major credit events, including an imminent Chapter 11 filing and a ~27,000-employee, 175-facility healthcare restructuring, which enabled early protection of pre-petition balances.</li>
+                    <li>Identified unauthorized EWA transactions at a former client after an employer-level suspension lapsed, and led the internal incident recap and the recovery outreach to the client.</li>
+                    <li>Turned a mostly manual reconciliation process across ~986 employers into Python-driven pipelines with built-in data validation, covering deduplication, ID normalization and date checks. This made weekly recon faster and more consistent and freed time for loss investigation.</li>
                   </ul>
                 </div>
               </div>
@@ -107,20 +121,24 @@
                 <div class="xp-skill-group">
                   <span class="xp-skill-label">Hard Skills</span>
                   <div class="xp-tags">
-                    <span class="xp-tag">Account Reconciliation</span>
-                    <span class="xp-tag">Payroll Deductions</span>
+                    <span class="xp-tag">Python (pandas, openpyxl)</span>
+                    <span class="xp-tag">Google Apps Script</span>
+                    <span class="xp-tag">EWA Reconciliation</span>
                     <span class="xp-tag">UKG / ADP Integrations</span>
-                    <span class="xp-tag">Excel Modeling</span>
-                    <span class="xp-tag">Data Cleaning</span>
-                    <span class="xp-tag">Write-off Analysis</span>
+                    <span class="xp-tag">Loss Analytics (bps)</span>
+                    <span class="xp-tag">Credit Risk Monitoring</span>
+                    <span class="xp-tag">Dashboards</span>
+                    <span class="xp-tag">Data Validation</span>
                   </div>
                 </div>
                 <div class="xp-skill-group">
                   <span class="xp-skill-label">Soft Skills</span>
                   <div class="xp-tags">
+                    <span class="xp-tag">Executive Briefings</span>
+                    <span class="xp-tag">Escalation Management</span>
+                    <span class="xp-tag">Root-Cause Analysis</span>
                     <span class="xp-tag">Client Communication</span>
-                    <span class="xp-tag">Cross-functional Escalation</span>
-                    <span class="xp-tag">Process Documentation</span>
+                    <span class="xp-tag">Policy Design</span>
                   </div>
                 </div>
               </div>
