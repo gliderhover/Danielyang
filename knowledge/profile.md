@@ -6,26 +6,32 @@ Keep facts here accurate; the bot will not invent anything that is not written b
 ## Who I am
 - Name: Daniel Yang (Chinese name 杨振雄, Yang Zhenxiong).
 - A builder who speaks both finance and product. I connect dots across disciplines, then package the result into something simple, useful and a little fun.
-- Path: trained as an architect, moved into project management and modular construction, then corporate development and M&A, real estate finance, data engineering, and AI agents.
+- Path: trained as an architect, moved into project management and modular construction, then corporate development and M&A, real estate finance, data engineering and AI agents, and now corporate finance at Payactiv while studying for a doctorate in AI.
 - I spent years doing the work behind the scenes: underwriting, sensitivity analysis, portfolio moves and M&A — work that rewards structured thinking and calm execution.
 - I prototype AI agents (tweet analysis, video reaction synthesis, structured outputs) because I like turning ambiguity into systems.
 - I like projects where the output is tangible: a decision memo, a dashboard people actually use, or a prototype that makes someone say "wait… that is possible?"
 - Bilingual: English and Mandarin Chinese.
 
 ## Education
-- Yale School of Management — MBA, Class of 2026. Focus: Real Estate, Data Analytics, and Financial Services.
+- University of the Cumberlands — doctoral program in Artificial Intelligence, started in 2026 (in progress).
+- Yale School of Management — MBA, graduated May 2026. Focus: Real Estate, Data Analytics, and Financial Services.
   - Awards at Yale: 2024 Yale Climate Innovation Grant; New Haven Civic Innovation Prize; ULI Hines Competition winner.
 - University of Pennsylvania — Master of Architecture, plus a Real Estate Investing & Analysis Certificate (2021).
   - Awards: 1st place in the Digiblast Contest (out of 60 entries); Editor's Choice, UNI Competition (2020).
 - The Ohio State University — B.S. in Architecture, cum laude (2018).
 
 ## Current role
-- The most recent roles on this portfolio began in August 2025, during my MBA: C&D Consulting and the Tsai Center for Innovative Thinking.
-- For my current position or availability, visitors should email me at daniel.yang.zy349@yale.edu.
+- Finance Manager in the Finance department at Payactiv (Milpitas, California), since July 2026.
+- At the same time I'm working on a doctorate in Artificial Intelligence at the University of the Cumberlands, which I started in 2026.
+- I finished my Yale MBA in May 2026. During the MBA I worked at C&D Consulting and the Tsai Center for Innovative Thinking.
+- For questions about my day-to-day work at Payactiv beyond my title, or about availability, visitors should email me at daniel.yang.zy349@yale.edu.
 
 ## Work experience
 
-### C&D Consulting — Data Engineer & Operations MBA Intern (Aug 2025 onward)
+### Payactiv — Finance Manager (July 2026 – present)
+- Finance department, based in Milpitas, California.
+
+### C&D Consulting — Data Engineer & Operations MBA Intern (Aug 2025 – 2026)
 - Helped define a Common Data Model (core entities and relationships) to give semantic meaning to commercial real estate (CRE) datasets — a CDM-first foundation to turn fragmented CRE data into an AI-ready product.
 - Built high-fidelity synthetic portfolio data for product testing.
 - Engineered ETL pipelines in two stages: Stage 1 "Lite" with automated Power Query ingestion; Stage 2 "Scale" with Python pipelines into a cloud lakehouse using a Medallion (Bronze/Silver/Gold) architecture.
@@ -35,7 +41,7 @@ Keep facts here accurate; the bot will not invent anything that is not written b
 - Strategic support for JLL Argentina: rebuilt the semantic layer for scoring and appraisal templates.
 - Business development: ICP and buyer persona cards, a relational schema mapping Fortune 1000 companies and their real estate teams, a prospect maturity scoring model with a prioritized top-50 target list, a competitor service/pricing matrix (5–10 competitors), TAM/SAM/SOM market sizing and delivery unit economics, and research on SOC 2 and enterprise security expectations.
 
-### Tsai Center for Innovative Thinking (Yale) — Venture Development Coordinator (Aug 2025 onward)
+### Tsai Center for Innovative Thinking (Yale) — Venture Development Coordinator (from Aug 2025, during my MBA)
 - Supported 20+ ventures by matching founders with 40+ mentors and investors.
 - Delivered 10+ workshops on sustainability, healthcare and tech.
 - Automated milestone and outcome reporting with Airtable, Notion and Tableau, enabling weekly funnel and engagement tracking.
@@ -101,7 +107,7 @@ Keep facts here accurate; the bot will not invent anything that is not written b
 - Ways of working: structured problem solving, turning ambiguity into systems, documentation, cross-functional execution, stakeholder communication, prioritization.
 
 ## Certifications
-- Project Management Professional (PMP); SAFe 6.0 Scrum Master; AWS Certified AI Practitioner; LEED Green Associate; Google UX Design Certificate; Strategy Management & Formulation.
+- Project Management Professional (PMP); SAFe 6.0 Scrum Master; AWS Certified AI Practitioner; Microsoft Azure AI Fundamentals; LEED Green Associate; Google UX Design Certificate; Strategy Management & Formulation.
 
 ## Contact
 - Email: daniel.yang.zy349@yale.edu
