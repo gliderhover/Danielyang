@@ -31,11 +31,11 @@
       nothingFound: "I don't have that detail here. You can email me at daniel.yang.zy349@yale.edu.",
       styles: { disciplined: "Disciplined", humorous: "Humorous", passionate: "Passionate", casual: "Casual" },
       starters: [
-        "Walk me through your career",
+        "Tell me about yourself",
+        "Why should we hire you?",
+        "Walk me through a deal you worked on",
         "What AI agents have you built?",
-        "Tell me about your M&A work",
         "What are you building on the side?",
-        "What kind of music do you make?",
       ],
       speechLang: "en-US",
     },
@@ -62,7 +62,7 @@
       offlineNote: "AI 暂未连接，以下是我资料中最相关的部分：",
       nothingFound: "这里没有这方面的信息，可以发邮件给我：daniel.yang.zy349@yale.edu。",
       styles: { disciplined: "严谨", humorous: "幽默", passionate: "热情", casual: "随意" },
-      starters: ["介绍一下你的职业经历", "你做过哪些 AI 智能体？", "讲讲你的并购经验", "你业余在做什么项目？", "你做什么样的音乐？"],
+      starters: ["请先做个自我介绍", "我们为什么要录用你？", "讲讲你参与过的一笔交易", "你做过哪些 AI 智能体？", "你业余在做什么项目？"],
       speechLang: "zh-CN",
     },
   };
