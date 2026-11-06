@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Correlated Failure in AI Agents: A Catastrophe Model from Public Benchmark Data | Daniel Yang</title>
+    <meta name="description" content="Preprint by Daniel (Zhenxiong) Yang, University of the Cumberlands, 2026. A catastrophe model for accumulation risk from correlated AI agent failures, built from public item-level benchmark data." />
+
+    <!-- Google Scholar (Highwire Press) tags -->
+    <meta name="citation_title" content="Correlated Failure in AI Agents: A Catastrophe Model from Public Benchmark Data" />
+    <meta name="citation_author" content="Yang, Daniel Zhenxiong" />
+    <meta name="citation_author_institution" content="University of the Cumberlands" />
+    <meta name="citation_publication_date" content="2026/11/05" />
+    <meta name="citation_online_date" content="2026/11/05" />
+    <meta name="citation_doi" content="10.5281/zenodo.23974014" />
+    <meta name="citation_publisher" content="Zenodo" />
+    <meta name="citation_language" content="en" />
+    <meta name="citation_keywords" content="AI agents; catastrophe modeling; accumulation risk; correlated failure; insurance; item response theory; conformal prediction; benchmarks" />
+    <meta name="citation_abstract_html_url" content="https://gliderhover.github.io/Danielyang/papers/yang-2026-correlated-failure-ai-agents.html" />
+    <meta name="citation_pdf_url" content="https://gliderhover.github.io/Danielyang/papers/yang-2026-correlated-failure-ai-agents.pdf" />
+
+    <!-- Dublin Core -->
+    <meta name="DC.title" content="Correlated Failure in AI Agents: A Catastrophe Model from Public Benchmark Data" />
+    <meta name="DC.creator" content="Yang, Daniel Zhenxiong" />
+    <meta name="DC.issued" content="2026-11-05" />
+    <meta name="DC.identifier" content="doi:10.5281/zenodo.23974014" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "headline": "Correlated Failure in AI Agents: A Catastrophe Model from Public Benchmark Data",
+        "name": "Correlated Failure in AI Agents: A Catastrophe Model from Public Benchmark Data",
+        "author": {
+          "@type": "Person",
+          "name": "Daniel (Zhenxiong) Yang",
+          "affiliation": { "@type": "CollegeOrUniversity", "name": "University of the Cumberlands" }
+        },
+        "datePublished": "2026-11-05",
+        "identifier": "https://doi.org/10.5281/zenodo.23974014",
+        "sameAs": "https://doi.org/10.5281/zenodo.23974014",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "encoding": {
+          "@type": "MediaObject",
+          "contentUrl": "https://gliderhover.github.io/Danielyang/papers/yang-2026-correlated-failure-ai-agents.pdf",
+          "encodingFormat": "application/pdf"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .paper { max-width: 760px; }
+      .paper h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.2; margin-bottom: var(--space-2); }
+      .paper .byline { color: var(--color-muted); margin: 0 0 var(--space-4); }
+      .paper h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.14em; margin-top: var(--space-5); }
+      .paper p { line-height: 1.65; }
+      .paper .actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
+      .paper .actions a {
+        display: inline-block; padding: 10px 18px; border-radius: var(--radius-pill);
+        border: 1px solid var(--color-border); background: var(--color-card);
+        color: var(--color-text); text-decoration: none; font-size: 0.9rem;
+      }
+      .paper .actions a.primary { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+      .paper .cite {
+        background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px;
+        padding: var(--space-3); font-size: 0.92rem; line-height: 1.55; overflow-wrap: anywhere;
+      }
+      .paper dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; font-size: 0.95rem; }
+      .paper dt { color: var(--color-muted); }
+      .paper dd { margin: 0; overflow-wrap: anywhere; }
+    </style>
+  </head>
+  <body>
+    <div class="site-header">
+      <div class="wrap site-header-inner">
+        <a class="brand site-name" href="../index.html" aria-label="Ask me anything">Daniel Yang</a>
+        <nav class="site-nav">
+          <a href="../index.html">Ask me</a>
+          <a href="../classic.html">Homepage</a>
+          <a href="../research.html" class="is-active">Research</a>
+          <a href="../writing.html">Work Samples</a>
+          <a href="../classic.html#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <main class="wrap paper">
+      <article>
+        <h1>Correlated Failure in AI Agents: A Catastrophe Model from Public Benchmark Data</h1>
+        <p class="byline">Daniel (Zhenxiong) Yang · University of the Cumberlands · Preprint, November 5, 2026</p>
+
+        <div class="actions">
+          <a class="primary" href="./yang-2026-correlated-failure-ai-agents.pdf">Full text (PDF)</a>
+          <a href="https://doi.org/10.5281/zenodo.23974014">Zenodo record</a>
+          <a href="https://doi.org/10.17605/OSF.IO/T8HEG">Registered rule (OSF)</a>
+        </div>
+
+        <h2>Abstract</h2>
+        <p>
+          Insurers are starting to cover losses caused by AI agents, but they have no way to price the risk that many
+          insured agents fail at once. This paper builds a catastrophe model for that accumulation risk from public,
+          item-level benchmark data. On the main coding, terminal and customer-service benchmarks, two models fail the
+          same task about twice as often as independence implies. Across eight capability benchmarks, shared task
+          difficulty explains almost all of this (GSO only in part), and models from the same provider add little beyond
+          it. Prompt-injection attacks are the exception. A two-parameter item response model, conformal recalibration and
+          a person-fit novelty screen forecast how often a new model will fail together with deployed agents, using its
+          headline score and a short audit run. In a forward-in-time test on 82 priced model runs from three benchmarks,
+          including those used to develop the method, the 90% forecast bands cover 89% to 92% of outcomes for pairs and
+          for portfolios of three and five agents. The rule was frozen with code hashes and then tested on a benchmark
+          that played no part in choosing it, where pair bands met the criteria and portfolio bands fell short. In a
+          prototype loss model, the 1-in-200 annual capability loss of a 500-deployment book is 1.48 times what
+          independence implies (1.15 to 1.69 across assumptions) and 1.30 times the vendor-concentration view, with the
+          same average loss. The shared hazard is the task, not the vendor, so diversifying vendors buys less protection
+          than insurers assume.
+        </p>
+
+        <h2>Details</h2>
+        <dl>
+          <dt>DOI</dt><dd><a href="https://doi.org/10.5281/zenodo.23974014">10.5281/zenodo.23974014</a></dd>
+          <dt>Published</dt><dd>November 5, 2026 (preprint, version 1)</dd>
+          <dt>Repository</dt><dd>Zenodo</dd>
+          <dt>Preregistration</dt><dd><a href="https://doi.org/10.17605/OSF.IO/T8HEG">10.17605/OSF.IO/T8HEG</a></dd>
+          <dt>License</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></dd>
+          <dt>Keywords</dt><dd>AI agents, catastrophe modeling, accumulation risk, correlated failure, insurance, item response theory, conformal prediction</dd>
+        </dl>
+
+        <h2>Cite</h2>
+        <p class="cite">
+          Yang, D. Z. (2026). <em>Correlated Failure in AI Agents: A Catastrophe Model from Public Benchmark Data</em>
+          [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.23974014
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© Daniel Yang · <a href="https://github.com/gliderhover" target="_blank" rel="noreferrer">GitHub</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
