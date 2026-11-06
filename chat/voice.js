@@ -14,6 +14,9 @@
       gameOpen: "Take the reverse CAPTCHA",
       gameTitle: "Show me: bot or human?",
       gameClose: "Close the game",
+      gateIntro: "Before you meet Jarvis, one quick security check. It's a reverse CAPTCHA: pass it and you're a bot, fail it and congratulations, you're human. One challenge, a few seconds.",
+      gateSkip: "Skip, I'm obviously human",
+      gateEnter: "Meet Jarvis",
       gameIntro: "This is a reverse CAPTCHA. Pass it and you're a bot. Fail it and congratulations, you're human. You get one challenge and a few seconds.",
       gameStart: "Prove it",
       gameAgain: "Try again",
@@ -63,6 +66,9 @@
       gameOpen: "来一局反向人机验证",
       gameTitle: "证明一下：你是机器人还是人类？",
       gameClose: "关闭游戏",
+      gateIntro: "见 Jarvis 之前，先做个安全检查。这是一个反向人机验证：过关说明你是机器人，失败才说明你是人类。只有一道题，几秒钟。",
+      gateSkip: "跳过，我显然是人类",
+      gateEnter: "去见 Jarvis",
       gameIntro: "这是一个反向人机验证：过关说明你是机器人，失败才说明你是人类。只有一道题，几秒钟时间。",
       gameStart: "开始证明",
       gameAgain: "再来一次",
@@ -121,6 +127,7 @@
     }
   })();
   if (prefs.lang && TEXT[prefs.lang]) state.lang = prefs.lang;
+  else if (/^zh\b/i.test(navigator.language || "")) state.lang = "zh";
   if (prefs.style && TEXT.en.styles[prefs.style]) state.style = prefs.style;
   if (typeof prefs.voiceOn === "boolean") state.voiceOn = prefs.voiceOn;
   const savePrefs = () => {
@@ -693,6 +700,8 @@
     let raf = 0;
     let cleanups = [];
     let lastKind = "";
+    let gate = false; // true when the game opened automatically on arrival
+    const titleEl = $("game-title");
 
     const rand = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
 
@@ -727,10 +736,13 @@
     function intro() {
       stop();
       dlg.dataset.state = "intro";
-      sub.textContent = t().gameIntro;
+      titleEl.textContent = gate ? t().gameInvite : t().gameTitle;
+      sub.textContent = gate ? t().gateIntro : t().gameIntro;
       stageEl.innerHTML = "";
       actions.innerHTML = "";
-      button(t().gameStart, play, true).focus();
+      const start = button(t().gameStart, play, true);
+      if (gate) button(t().gateSkip, () => dlg.close());
+      start.focus();
     }
 
     function result(isBot) {
@@ -747,7 +759,7 @@
       stageEl.append(title, note);
       actions.innerHTML = "";
       button(t().gameAgain, play);
-      button(t().gameBack, () => dlg.close(), true).focus();
+      button(gate ? t().gateEnter : t().gameBack, () => dlg.close(), true).focus();
       speech.cancel();
       speech.enqueue(`${title.textContent} ${note.textContent}`);
     }
@@ -813,6 +825,7 @@
 
     function play() {
       stop();
+      titleEl.textContent = t().gameTitle;
       dlg.dataset.state = "play";
       stageEl.innerHTML = "";
       actions.innerHTML = "";
@@ -834,16 +847,37 @@
       }
     }
 
-    $("game-open").addEventListener("click", () => {
+    function open(asGate) {
+      gate = asGate;
       speech.cancel();
       if (typeof dlg.showModal === "function") dlg.showModal();
       else dlg.setAttribute("open", "");
       intro();
-    });
+    }
+
+    $("game-open").addEventListener("click", () => open(false));
+
+    // Show the check once per browser session, before the visitor uses the page.
+    let seen = false;
+    try {
+      seen = sessionStorage.getItem("ask-daniel-gate") === "1";
+    } catch {
+      /* storage unavailable: show it */
+    }
+    if (!seen) requestAnimationFrame(() => open(true));
     $("game-close").addEventListener("click", () => dlg.close());
     dlg.addEventListener("close", () => {
       stop();
       speech.cancel();
+      if (gate) {
+        try {
+          sessionStorage.setItem("ask-daniel-gate", "1");
+        } catch {
+          /* ignore */
+        }
+        gate = false;
+        input.focus();
+      }
     });
     dlg.addEventListener("click", (e) => {
       if (e.target === dlg) dlg.close();
