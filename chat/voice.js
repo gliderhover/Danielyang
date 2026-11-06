@@ -9,7 +9,24 @@
   const TEXT = {
     en: {
       headline: "What do you want to know about me?",
-      lede: "I'm an AI version of Daniel Yang, built from his résumé and projects. Ask out loud or type.",
+      lede: "Hi, I'm Jarvis, Daniel Yang's IP manager. (Daniel is the IP.) He's busy building things, so I take his interviews and answer in his voice. I've memorized every line of his résumé and I've never once asked for a raise. Ask out loud or type.",
+      gameInvite: "Wait, are you even human?",
+      gameOpen: "Take the reverse CAPTCHA",
+      gameTitle: "Show me: bot or human?",
+      gameClose: "Close the game",
+      gameIntro: "This is a reverse CAPTCHA. Pass it and you're a bot. Fail it and congratulations, you're human. You get one challenge and a few seconds.",
+      gameStart: "Prove it",
+      gameAgain: "Try again",
+      gameBack: "Back to Jarvis",
+      gameMath: (a, b) => `What is ${a.toLocaleString("en-US")} × ${b.toLocaleString("en-US")}? Exact answer only.`,
+      gameMathLabel: "Your answer",
+      gameType: "Type this exactly. No copy-paste, I'm watching.",
+      gameTypeLabel: "Type the code",
+      gameDots: (n) => `Click all ${n} dots before time runs out. They don't sit still.`,
+      botTitle: "Verdict: bot.",
+      botNote: "Flawless and suspiciously fast. No human does that. Jarvis has notified the other bots: welcome, colleague. You may still ask about Daniel; we don't discriminate.",
+      humanTitle: "Verdict: human.",
+      humanNote: "Too slow, beautifully imperfect, unmistakably human. Daniel would love to meet you. Go ahead and ask him anything.",
       classic: "Classic site",
       soundOn: "Voice on",
       soundOff: "Voice off",
@@ -41,7 +58,24 @@
     },
     zh: {
       headline: "你想了解我什么？",
-      lede: "我是 Daniel Yang 的 AI 分身，根据他的简历和项目打造。直接说出来，或者打字提问。",
+      lede: "你好，我是 Jarvis，Daniel Yang 的 IP 经纪人（IP 就是 Daniel 本人）。他忙着搞建设，面试由我来接，并且用他的口吻回答。他的简历我一字不落全背下来了，而且从来不要求加薪。直接说出来，或者打字提问。",
+      gameInvite: "等等，你确定你是人类吗？",
+      gameOpen: "来一局反向人机验证",
+      gameTitle: "证明一下：你是机器人还是人类？",
+      gameClose: "关闭游戏",
+      gameIntro: "这是一个反向人机验证：过关说明你是机器人，失败才说明你是人类。只有一道题，几秒钟时间。",
+      gameStart: "开始证明",
+      gameAgain: "再来一次",
+      gameBack: "回到 Jarvis",
+      gameMath: (a, b) => `${a} × ${b} 等于多少？必须精确。`,
+      gameMathLabel: "你的答案",
+      gameType: "一字不差地输入下面这串字符。不许复制粘贴，我盯着呢。",
+      gameTypeLabel: "输入字符",
+      gameDots: (n) => `在时间结束前点掉全部 ${n} 个圆点。它们可不会乖乖待着。`,
+      botTitle: "判定：机器人。",
+      botNote: "完美无瑕，快得可疑，人类做不到。Jarvis 已通知其他机器人：欢迎你，同事。你照样可以问 Daniel 的问题，我们不搞歧视。",
+      humanTitle: "判定：人类。",
+      humanNote: "又慢又不完美，一看就是人类。Daniel 很想认识你，尽管问他任何问题吧。",
       classic: "经典版网站",
       soundOn: "语音开",
       soundOff: "语音关",
@@ -126,6 +160,9 @@
     });
     document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => (el.placeholder = t()[el.dataset.i18nPlaceholder]));
     document.querySelectorAll("[data-i18n-title]").forEach((el) => (el.title = t()[el.dataset.i18nTitle]));
+    document
+      .querySelectorAll("[data-i18n-aria]:not(#mic)")
+      .forEach((el) => el.setAttribute("aria-label", t()[el.dataset.i18nAria]));
     document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === state.lang)));
 
     soundBtn.setAttribute("aria-pressed", String(state.voiceOn));
@@ -645,6 +682,176 @@
     requestAnimationFrame(draw);
   }
 
+
+  /* ---------------- reverse CAPTCHA game ---------------- */
+  const game = (() => {
+    const dlg = $("game");
+    const sub = $("game-sub");
+    const stageEl = $("game-stage");
+    const bar = $("game-bar");
+    const actions = $("game-actions");
+    let raf = 0;
+    let cleanups = [];
+    let lastKind = "";
+
+    const rand = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
+
+    function stop() {
+      cancelAnimationFrame(raf);
+      cleanups.forEach((fn) => fn());
+      cleanups = [];
+      bar.style.transform = "scaleX(0)";
+    }
+
+    function button(label, onClick, primary) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = label;
+      if (primary) b.className = "is-primary";
+      b.addEventListener("click", onClick);
+      actions.appendChild(b);
+      return b;
+    }
+
+    function countdown(ms, onTimeout) {
+      const end = performance.now() + ms;
+      const tick = () => {
+        const left = Math.max(0, end - performance.now());
+        bar.style.transform = `scaleX(${left / ms})`;
+        if (left <= 0) return onTimeout();
+        raf = requestAnimationFrame(tick);
+      };
+      tick();
+    }
+
+    function intro() {
+      stop();
+      dlg.dataset.state = "intro";
+      sub.textContent = t().gameIntro;
+      stageEl.innerHTML = "";
+      actions.innerHTML = "";
+      button(t().gameStart, play, true).focus();
+    }
+
+    function result(isBot) {
+      stop();
+      dlg.dataset.state = isBot ? "bot" : "human";
+      sub.textContent = "";
+      stageEl.innerHTML = "";
+      const title = document.createElement("p");
+      title.className = "verdict";
+      title.textContent = isBot ? t().botTitle : t().humanTitle;
+      const note = document.createElement("p");
+      note.className = "verdict-note";
+      note.textContent = isBot ? t().botNote : t().humanNote;
+      stageEl.append(title, note);
+      actions.innerHTML = "";
+      button(t().gameAgain, play);
+      button(t().gameBack, () => dlg.close(), true).focus();
+      speech.cancel();
+      speech.enqueue(`${title.textContent} ${note.textContent}`);
+    }
+
+    function textChallenge(prompt, label, target, check, ms, display) {
+      sub.textContent = prompt;
+      if (display) {
+        const code = document.createElement("p");
+        code.className = "game-code";
+        code.textContent = display;
+        code.setAttribute("aria-label", display.split("").join(" "));
+        stageEl.appendChild(code);
+      }
+      const field = document.createElement("input");
+      field.className = "game-input";
+      field.setAttribute("aria-label", label);
+      field.placeholder = label;
+      field.autocomplete = "off";
+      field.spellcheck = false;
+      if (target === "number") field.inputMode = "numeric";
+      const block = (e) => e.preventDefault();
+      field.addEventListener("paste", block);
+      field.addEventListener("drop", block);
+      field.addEventListener("input", () => {
+        if (check(field.value)) result(true);
+      });
+      stageEl.appendChild(field);
+      field.focus();
+      countdown(ms, () => result(false));
+    }
+
+    function dotsChallenge() {
+      const n = 12;
+      sub.textContent = t().gameDots(n);
+      const field = document.createElement("div");
+      field.className = "game-field";
+      stageEl.appendChild(field);
+      let left = n;
+      const dots = [];
+      const place = (d) => {
+        d.style.left = `${rand(4, 92)}%`;
+        d.style.top = `${rand(6, 86)}%`;
+      };
+      for (let i = 0; i < n; i++) {
+        const d = document.createElement("button");
+        d.type = "button";
+        d.className = "game-dot";
+        d.setAttribute("aria-label", "dot");
+        place(d);
+        d.addEventListener("pointerdown", (e) => {
+          e.preventDefault();
+          d.remove();
+          left -= 1;
+          if (left === 0) result(true);
+        });
+        field.appendChild(d);
+        dots.push(d);
+      }
+      const hop = setInterval(() => dots.forEach((d) => d.isConnected && place(d)), 650);
+      cleanups.push(() => clearInterval(hop));
+      countdown(3000, () => result(false));
+    }
+
+    function play() {
+      stop();
+      dlg.dataset.state = "play";
+      stageEl.innerHTML = "";
+      actions.innerHTML = "";
+      const kinds = ["math", "type", "dots"].filter((k) => k !== lastKind);
+      const kind = kinds[rand(0, kinds.length - 1)];
+      lastKind = kind;
+      if (kind === "math") {
+        const a = rand(1200, 9800);
+        const b = rand(1200, 9800);
+        textChallenge(t().gameMath(a, b), t().gameMathLabel, "number",
+          (v) => Number(v.replace(/[^\d]/g, "")) === a * b, 5000);
+      } else if (kind === "type") {
+        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789#$%&@!?";
+        let code = "";
+        for (let i = 0; i < 16; i++) code += chars[rand(0, chars.length - 1)];
+        textChallenge(t().gameType, t().gameTypeLabel, "text", (v) => v === code, 4000, code);
+      } else {
+        dotsChallenge();
+      }
+    }
+
+    $("game-open").addEventListener("click", () => {
+      speech.cancel();
+      if (typeof dlg.showModal === "function") dlg.showModal();
+      else dlg.setAttribute("open", "");
+      intro();
+    });
+    $("game-close").addEventListener("click", () => dlg.close());
+    dlg.addEventListener("close", () => {
+      stop();
+      speech.cancel();
+    });
+    dlg.addEventListener("click", (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+
+    return { refresh: () => dlg.open && dlg.dataset.state === "intro" && intro() };
+  })();
+
   /* ---------------- controls ---------------- */
   document.querySelectorAll(".lang button").forEach((b) =>
     b.addEventListener("click", () => {
@@ -653,6 +860,7 @@
       state.lang = b.dataset.lang;
       savePrefs();
       renderChrome();
+      game.refresh();
     })
   );
 

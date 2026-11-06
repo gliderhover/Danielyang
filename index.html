@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./chat/voice.css" />
+    <link rel="stylesheet" href="./chat/voice.css?v=3" />
   </head>
   <body>
     <header class="bar">
@@ -33,9 +33,15 @@
       <section class="intro">
         <h1 data-i18n="headline">What do you want to know about me?</h1>
         <p class="lede" data-i18n="lede">
-          I'm an AI version of Daniel Yang, built from his résumé and projects. Ask out loud or type.
+          Hi, I'm Jarvis, Daniel Yang's IP manager. (Daniel is the IP.) He's busy building things, so I take his
+          interviews and answer in his voice. I've memorized every line of his résumé and I've never once asked for a
+          raise. Ask out loud or type.
         </p>
         <div class="starters" id="starters"></div>
+        <p class="game-invite">
+          <span data-i18n="gameInvite">Wait, are you even human?</span>
+          <button type="button" id="game-open" data-i18n="gameOpen">Take the reverse CAPTCHA</button>
+        </p>
       </section>
 
       <ol class="transcript" id="transcript" aria-live="polite"></ol>
@@ -64,7 +70,20 @@
       </div>
     </div>
 
+    <dialog class="game" id="game" aria-labelledby="game-title">
+      <div class="game-head">
+        <h2 id="game-title" data-i18n="gameTitle">Show me: bot or human?</h2>
+        <button type="button" class="game-close" id="game-close" data-i18n-aria="gameClose" aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+      <p class="game-sub" id="game-sub"></p>
+      <div class="game-stage" id="game-stage"></div>
+      <div class="game-timer" aria-hidden="true"><span id="game-bar"></span></div>
+      <div class="game-actions" id="game-actions"></div>
+    </dialog>
+
     <script src="./chat/config.js?v=2"></script>
-    <script src="./chat/voice.js?v=2"></script>
+    <script src="./chat/voice.js?v=3"></script>
   </body>
 </html>
